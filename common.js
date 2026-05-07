@@ -1,5 +1,5 @@
 // --- 1. GOOGLE ANALYTICS 4 ---
-const GA_ID = 'G-4Y11M1VLK7';
+const GA_ID = 'G-V89RPQK476';
 const gaScript = document.createElement('script');
 gaScript.async = true;
 gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
