@@ -82,6 +82,21 @@ function getFileNameFromUrl(url) {
             return;
         }
 
+        // --- QUESTA È LA PARTE CHE MANCAVA ---
+        // Richiamiamo la funzione per ottenere il nome dinamico
+        const dynamicName = getFileNameFromUrl(url); 
+
+        // Creiamo un link temporaneo per il download
+        const link = document.createElement('a');
+        
+        // --- MODIFICA ANCHE QUI ---
+        // Usiamo dynamicName invece della stringa fissa
+        link.download = `${dynamicName}.png`; 
+        
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    }
+
         // Creiamo un link temporaneo per il download
         const link = document.createElement('a');
         link.download = 'qrcode-jckswebapps.png';
