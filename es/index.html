@@ -62,7 +62,7 @@
 </section>
 
 <div class="generator-card">
-    <input type="text" id="qr-input" placeholder="Pega tu enlace aquí (ej. https://tusitio.es)">
+    <input type="text" id="qr-input" placeholder="Pega tu enlace aquí (ej. https://tusitio.es)" oninput="generateQR()">
     <canvas id="qr-canvas"></canvas>
     <button onclick="downloadQR()">Descargar QR de Alta Resolución</button>
 </div>
