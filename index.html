@@ -51,6 +51,28 @@
         }
     }
 
+    // Funzione intelligente per estrarre il nome dall'URL
+function getFileNameFromUrl(url) {
+    if (!url) return "qrcode-jcks";
+
+    try {
+        // Rimuoviamo protocolli (http, https) e spazi
+        let cleanUrl = url.replace(/^(https?:\/\/)/, '').replace(/\/$/, '');
+        
+        // Dividiamo l'URL in parti basandoci sullo slash
+        let parts = cleanUrl.split('/');
+        
+        // Se c'è un percorso dopo lo slash (es: /tatami-eva), prendiamo l'ultima parte
+        // Altrimenti prendiamo il dominio (es: www.budomagazine.com)
+        let fileName = parts[parts.length - 1];
+        
+        // Pulizia finale per evitare caratteri vietati nei nomi file
+        return fileName.replace(/[^a-z0-9.-]/gi, '_').toLowerCase();
+    } catch (e) {
+        return "qrcode-jcks";
+    }
+}
+
     function downloadQR() {
         const canvas = document.getElementById('qr-canvas');
         const url = document.getElementById('qr-input').value;
