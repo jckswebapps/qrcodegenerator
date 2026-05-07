@@ -1,1 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore QR Vettoriale</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 50px; background: #f4f4f9; }
+        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
+        input { width: 80%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        #qrcode { margin: 20px 0; }
+        .buttons { display: flex; gap: 10px; justify-content: center; }
+        button { padding: 10px 20px; cursor: pointer; border: none; border-radius: 5px; background: #007bff; color: white; }
+        button:hover { background: #0056b3; }
+        .info { margin-top: 40px; max-width: 600px; color: #555; line-height: 1.6; }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <h1>QR Code Generator</h1>
+    <p>Inserisci l'URL per generare il tuo codice statico (non scade mai).</p>
+    <input type="text" id="url" placeholder="https://www.tuosito.it" oninput="generateQR()">
+    
+    <div id="qrcode"></div>
+
+    <div class="buttons">
+        <button onclick="downloadSVG()">Scarica SVG (Stampa)</button>
+    </div>
+</div>
+
+<div class="info">
+    <h2>Perché usare il formato SVG?</h2>
+    <p>Il formato vettoriale SVG è ideale per schede tecniche e cataloghi. A differenza del PNG, può essere ingrandito all'infinito senza perdere qualità, garantendo che il tuo QR code sia sempre leggibile dagli smartphone.</p>
+</div>
+
+<script>
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        width: 256,
+        height: 256
+    });
+
+    function generateQR() {
+        var url = document.getElementById("url").value;
+        if(url) {
+            qrcode.makeCode(url);
+        }
+    }
+
+    function downloadSVG() {
+        const svg = document.querySelector('#qrcode svg');
+        if(!svg) { alert("Inserisci un URL prima!"); return; }
+        const svgData = new XMLSerializer().serializeToString(svg);
+        const svgBlob = new Blob([svgData], {type: "image/svg+xml;charset=utf-8"});
+        const svgUrl = URL.createObjectURL(svgBlob);
+        const downloadLink = document.createElement("a");
+        downloadLink.href = svgUrl;
+        downloadLink.download = "qrcode-vaxana.svg";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    }
+</script>
+
+</body>
+</html>
