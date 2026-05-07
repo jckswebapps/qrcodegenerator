@@ -212,6 +212,19 @@
         link.click();
     }
 </script>
+<div id="cookie-banner" style="position: fixed; bottom: 0; width: 100%; background: #212529; color: white; padding: 15px; text-align: center; z-index: 1000; font-size: 14px;">
+    Questo sito utilizza i cookie di Google Analytics per migliorare l'esperienza. 
+    <button onclick="acceptCookies()" style="background: var(--primary); border: none; color: white; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-left: 10px;">Accetta</button>
+</div>
 
+<script>
+function acceptCookies() {
+    document.getElementById('cookie-banner').style.display = 'none';
+    localStorage.setItem('cookies_accepted', 'true');
+}
+if (localStorage.getItem('cookies_accepted')) {
+    document.getElementById('cookie-banner').style.display = 'none';
+}
+</script>
 </body>
 </html>
