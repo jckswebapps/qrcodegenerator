@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <script>
+    // Funzione di reindirizzamento automatico basato sulla lingua
+    (function() {
+        // Se l'utente ha già scelto una lingua manualmente o viene da un link diretto, non redirigere
+        if (sessionStorage.getItem('language_redirected')) return;
+
+        const userLang = navigator.language || navigator.userLanguage; 
+        const langCode = userLang.substring(0, 2).toLowerCase(); // Prende le prime due lettere (it, de, fr...)
+
+        // Definiamo le lingue supportate (esclusa la principale inglese)
+        const supportedLanguages = {
+            'it': '/it/',
+            'de': '/de/',
+            'es': '/es/',
+            'fr': '/fr/'
+        };
+
+        if (supportedLanguages[langCode]) {
+            sessionStorage.setItem('language_redirected', 'true');
+            window.location.href = supportedLanguages[langCode];
+        }
+    })();
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generatore QR Code Professionale | Alta Risoluzione Gratis</title>
