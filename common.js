@@ -1,4 +1,4 @@
-// --- GOOGLE ANALYTICS 4 ---
+// --- 1. GOOGLE ANALYTICS 4 ---
 const GA_ID = 'G-4Y11M1VLK7';
 const gaScript = document.createElement('script');
 gaScript.async = true;
@@ -10,26 +10,29 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', GA_ID);
 
-// --- REDIRECT LINGUA AUTOMATICO ---
+// --- 2. REDIRECT LINGUA INTELLIGENTE ---
 (function() {
-    // Evita il redirect se siamo già stati reindirizzati in questa sessione
+    // 1. Controlliamo se l'utente è sulla ROOT (es: fastqrfree.com/ o fastqrfree.com/index.html)
+    // Se la posizione NON è la root, interrompiamo lo script (Evita il LOOP)
+    const isRoot = window.location.pathname === '/' || window.location.pathname === '/index.html';
+    if (!isRoot) return;
+
+    // 2. Controlliamo se abbiamo già fatto il redirect in questa sessione
     if (sessionStorage.getItem('language_redirected')) return;
 
-    // Se l'utente è sulla root (fastqrfree.com/) controlliamo la sua lingua
-    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-        const userLang = navigator.language || navigator.userLanguage;
-        const langCode = userLang.substring(0, 2).toLowerCase();
+    const userLang = navigator.language || navigator.userLanguage;
+    const langCode = userLang.substring(0, 2).toLowerCase();
 
-        const supportedLanguages = {
-            'it': '/it/',
-            'de': '/de/',
-            'es': '/es/',
-            'fr': '/fr/'
-        };
+    const supportedLanguages = {
+        'it': '/it/',
+        'de': '/de/',
+        'es': '/es/',
+        'fr': '/fr/'
+    };
 
-        if (supportedLanguages[langCode]) {
-            sessionStorage.setItem('language_redirected', 'true');
-            window.location.href = supportedLanguages[langCode];
-        }
+    if (supportedLanguages[langCode]) {
+        sessionStorage.setItem('language_redirected', 'true');
+        // Reindirizza alla sottocartella specifica
+        window.location.href = window.location.origin + supportedLanguages[langCode];
     }
 })();
