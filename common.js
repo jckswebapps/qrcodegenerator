@@ -36,3 +36,68 @@ gtag('config', GA_ID);
         window.location.href = window.location.origin + supportedLanguages[langCode];
     }
 })();
+// --- LOGICA GENERATORE QR ---
+let qr;
+document.addEventListener("DOMContentLoaded", function() {
+    const canvas = document.getElementById('qr-canvas');
+    if (canvas) {
+        qr = new QRious({
+            element: canvas,
+            size: 1000,
+            level: 'H',
+            value: 'https://fastqrfree.com'
+        });
+    }
+});
+
+function generateQR() {
+    const val = document.getElementById('qr-input').value;
+    if (val.trim() !== "" && qr) {
+        qr.value = val;
+    }
+}
+
+function getFileNameFromUrl(url) {
+    if (!url) return "qrcode-jcks";
+    try {
+        let cleanUrl = url.replace(/^(https?:\/\/)/, '').replace(/\/$/, '');
+        let parts = cleanUrl.split('/');
+        let fileName = parts[parts.length - 1];
+        if (!fileName || fileName.includes('.')) {
+            fileName = parts[0].replace('www.', '');
+        }
+        return fileName.replace(/[^a-z0-9.-]/gi, '_').toLowerCase();
+    } catch (e) { return "qrcode-jcks"; }
+}
+
+function downloadQR() {
+    const canvas = document.getElementById('qr-canvas');
+    const urlInput = document.getElementById('qr-input').value;
+    
+    if (!urlInput) {
+        // Messaggi di errore tradotti
+        const msgs = { 'it': 'Inserisci un URL!', 'en': 'Enter a URL!', 'de': 'URL eingeben!', 'es': '¡Ingresa un URL!', 'fr': 'Entrez une URL!' };
+        const lang = document.documentElement.lang || 'en';
+        alert(msgs[lang] || msgs['en']);
+        return;
+    }
+    
+    const dynamicName = getFileNameFromUrl(urlInput);
+    const link = document.createElement('a');
+    link.download = dynamicName + '.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+}
+
+// --- LOGICA COOKIE ---
+function acceptCookies() {
+    document.getElementById('cookie-banner').style.display = 'none';
+    localStorage.setItem('cookies_accepted', 'true');
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    if (localStorage.getItem('cookies_accepted')) {
+        const banner = document.getElementById('cookie-banner');
+        if (banner) banner.style.display = 'none';
+    }
+});
