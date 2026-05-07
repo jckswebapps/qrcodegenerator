@@ -3,75 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Vettoriale PRO | jckswebapps</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/kazuhikoarase-qrcode-generator/2.0.2/qrcode.min.js"></script>
+    <title>QR Generator PRO | jckswebapps</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <style>
-        body { font-family: 'Segoe UI', system-ui, sans-serif; display: flex; flex-direction: column; align-items: center; padding: 40px; background: #f0f4f8; color: #2d3436; }
-        .container { background: white; padding: 35px; border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); text-align: center; max-width: 420px; width: 100%; }
-        h1 { font-size: 26px; margin-bottom: 10px; color: #0984e3; }
-        p.subtitle { color: #636e72; margin-bottom: 25px; font-size: 14px; }
-        input { width: 100%; padding: 14px; margin-bottom: 25px; border: 2px solid #dfe6e9; border-radius: 12px; box-sizing: border-box; outline: none; font-size: 16px; transition: all 0.3s; }
-        input:focus { border-color: #0984e3; box-shadow: 0 0 0 4px rgba(9, 132, 227, 0.1); }
-        #qr-container { background: white; padding: 15px; display: inline-block; border-radius: 12px; border: 1px solid #f1f2f6; margin-bottom: 25px; }
-        .buttons { display: grid; grid-template-columns: 1fr; gap: 12px; }
-        button { padding: 14px; cursor: pointer; border: none; border-radius: 12px; background: #0984e3; color: white; font-weight: 600; font-size: 16px; transition: transform 0.2s, background 0.2s; }
-        button:hover { background: #074b83; transform: translateY(-2px); }
-        button.secondary { background: #6c757d; }
-        .vettore-tag { display: inline-block; background: #e1f5fe; color: #0288d1; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: bold; margin-bottom: 15px; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; display: flex; flex-direction: column; align-items: center; padding: 40px; background: #f8f9fa; color: #212529; }
+        .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; max-width: 400px; width: 100%; }
+        h1 { font-size: 24px; margin-bottom: 20px; color: #0d6efd; }
+        input { width: 100%; padding: 12px; margin-bottom: 20px; border: 2px solid #dee2e6; border-radius: 10px; box-sizing: border-box; outline: none; transition: border-color 0.2s; }
+        input:focus { border-color: #0d6efd; }
+        canvas { background: white; padding: 10px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 20px; }
+        .buttons { display: flex; flex-direction: column; gap: 10px; }
+        button { padding: 12px; cursor: pointer; border: none; border-radius: 10px; background: #0d6efd; color: white; font-weight: 600; font-size: 16px; transition: background 0.2s; }
+        button:hover { background: #0a58ca; }
+        .footer-text { margin-top: 30px; font-size: 14px; color: #6c757d; max-width: 300px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="vettore-tag">FORMATO VETTORIALE ATTIVO</div>
     <h1>QR Generator PRO</h1>
-    <p class="subtitle">Genera file SVG pronti per la stampa professionale</p>
+    <input type="text" id="qr-input" placeholder="Incolla l'URL qui..." oninput="generateQR()">
     
-    <input type="text" id="qr-input" placeholder="Inserisci URL (es: https://google.com)" oninput="drawQR()">
-    
-    <div id="qr-container"></div>
+    <canvas id="qr-canvas"></canvas>
 
     <div class="buttons">
-        <button onclick="downloadSVG()">Scarica VETTORIALE (SVG)</button>
+        <button onclick="downloadQR()">Scarica QR Code (PNG)</button>
     </div>
 </div>
 
+<p class="footer-text">
+    Genera codici ad alta risoluzione per le tue schede tecniche. Il formato è ottimizzato per la stampa su materiali tecnici.
+</p>
+
 <script>
-    function drawQR() {
-        const typeNumber = 0; // calcola automaticamente la densità
-        const errorCorrectionLevel = 'H'; // Massima resistenza per la stampa
-        const qr = qrcode(typeNumber, errorCorrectionLevel);
-        const val = document.getElementById('qr-input').value || "https://jckswebapps.github.io";
-        
-        qr.addData(val);
-        qr.make();
-        
-        // Genera il modulo SVG (celle di dimensione 8px)
-        document.getElementById('qr-container').innerHTML = qr.createSvgTag(8, 0);
+    // Inizializziamo il generatore sul canvas
+    const qr = new QRious({
+        element: document.getElementById('qr-canvas'),
+        size: 300,
+        level: 'H', // Alta resistenza agli errori
+        value: 'https://jckswebapps.github.io'
+    });
+
+    function generateQR() {
+        const val = document.getElementById('qr-input').value;
+        if (val.trim() !== "") {
+            qr.value = val;
+        }
     }
 
-    function downloadSVG() {
-        const svgElement = document.querySelector('#qr-container svg');
-        if (!svgElement) {
-            alert("Inserisci un URL prima!");
+    function downloadQR() {
+        const canvas = document.getElementById('qr-canvas');
+        const url = document.getElementById('qr-input').value;
+        
+        if (!url) {
+            alert("Per favore, inserisci prima un URL!");
             return;
         }
 
-        // Estraiamo il codice sorgente dell'SVG
-        const svgData = new XMLSerializer().serializeToString(svgElement);
-        const svgBlob = new Blob([svgData], {type: "image/svg+xml;charset=utf-8"});
-        const svgUrl = URL.createObjectURL(svgBlob);
-        
-        const downloadLink = document.createElement("a");
-        downloadLink.href = svgUrl;
-        downloadLink.download = "qrcode-vettoriale-jcks.svg";
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
+        // Creiamo un link temporaneo per il download
+        const link = document.createElement('a');
+        link.download = 'qrcode-jckswebapps.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
     }
-
-    // Disegna un codice di default all'avvio
-    window.onload = drawQR;
 </script>
 
 </body>
