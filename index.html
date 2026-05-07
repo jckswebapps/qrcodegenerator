@@ -1,46 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
-    // Funzione di reindirizzamento automatico basato sulla lingua
-    (function() {
-        // Se l'utente ha già scelto una lingua manualmente o viene da un link diretto, non redirigere
-        if (sessionStorage.getItem('language_redirected')) return;
-
-        const userLang = navigator.language || navigator.userLanguage; 
-        const langCode = userLang.substring(0, 2).toLowerCase(); // Prende le prime due lettere (it, de, fr...)
-
-        // Definiamo le lingue supportate (esclusa la principale inglese)
-        const supportedLanguages = {
-            'it': '/qrcodegenerator/it/',
-            'de': '/qrcodegenerator/de/',
-            'es': '/qrcodegenerator/es/',
-            'fr': '/qrcodegenerator/fr/'
-        };
-
-        if (supportedLanguages[langCode]) {
-            sessionStorage.setItem('language_redirected', 'true');
-            window.location.href = supportedLanguages[langCode];
-        }
-    })();
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generatore QR Code Professionale | Alta Risoluzione Gratis</title>
+    <title>Professional QR Code Generator | High Resolution Free</title>
+    
+    <script>
+        (function() {
+            if (sessionStorage.getItem('language_redirected')) return;
+            const userLang = navigator.language || navigator.userLanguage; 
+            const langCode = userLang.substring(0, 2).toLowerCase(); 
+
+            const supportedLanguages = {
+                'it': '/qrcodegenerator/it/',
+                'de': '/qrcodegenerator/de/',
+                'es': '/qrcodegenerator/es/',
+                'fr': '/qrcodegenerator/fr/'
+            };
+
+            if (supportedLanguages[langCode]) {
+                sessionStorage.setItem('language_redirected', 'true');
+                window.location.pathname = supportedLanguages[langCode];
+            }
+        })();
+    </script>
+
     <link rel="alternate" hreflang="en" href="https://jckswebapps.github.io/qrcodegenerator/" />
-<link rel="alternate" hreflang="it" href="https://jckswebapps.github.io/qrcodegenerator/it/" />
-<link rel="alternate" hreflang="de" href="https://jckswebapps.github.io/qrcodegenerator/de/" />
-<link rel="alternate" hreflang="x-default" href="https://jckswebapps.github.io/qrcodegenerator/" />
+    <link rel="alternate" hreflang="it" href="https://jckswebapps.github.io/qrcodegenerator/it/" />
+    <link rel="alternate" hreflang="de" href="https://jckswebapps.github.io/qrcodegenerator/de/" />
+    <link rel="alternate" hreflang="x-default" href="https://jckswebapps.github.io/qrcodegenerator/" />
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    
     <style>
         :root { --primary: #0d6efd; --secondary: #6c757d; --dark: #212529; --light: #f8f9fa; }
         body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: var(--dark); margin: 0; background: var(--light); }
-        
-        /* Header & Hero */
         .hero { background: white; padding: 60px 20px; text-align: center; border-bottom: 1px solid #e9ecef; }
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Generator Box */
         .generator-card { 
             background: white; padding: 40px; border-radius: 24px; 
             box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
@@ -64,14 +60,13 @@
             font-weight: 700; font-size: 18px; transition: all 0.3s; 
         }
         button:hover { background: #0a58ca; transform: translateY(-2px); }
-
-        /* Info Sections */
         .content-section { padding: 60px 0; background: white; }
         .bg-grey { background: var(--light); }
         h2 { color: var(--primary); font-size: 28px; margin-top: 0; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
         @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
-        
+        .lang-switcher { margin-top: 20px; font-size: 14px; }
+        .lang-switcher a { color: var(--primary); text-decoration: none; margin: 0 10px; }
         footer { padding: 40px; text-align: center; color: var(--secondary); font-size: 14px; }
     </style>
 </head>
@@ -79,27 +74,32 @@
 
 <section class="hero">
     <div class="container">
-        <h1>Generatore QR Code Professionale</h1>
-        <p>Crea codici QR statici in alta risoluzione per uso commerciale, stampa e marketing.</p>
+        <h1>Professional QR Code Generator</h1>
+        <p>Create high-resolution static QR codes for commercial use, print, and marketing.</p>
+        <div class="lang-switcher">
+            <a href="/qrcodegenerator/">EN</a> | 
+            <a href="/qrcodegenerator/it/">IT</a> | 
+            <a href="/qrcodegenerator/de/">DE</a>
+        </div>
     </div>
 </section>
 
 <div class="generator-card">
-    <input type="text" id="qr-input" placeholder="Incolla il tuo link qui (es. https://tuosito.it)" oninput="generateQR()">
+    <input type="text" id="qr-input" placeholder="Paste your link here (e.g., https://yoursite.com)" oninput="generateQR()">
     <canvas id="qr-canvas"></canvas>
-    <button onclick="downloadQR()">Scarica QR Alta Risoluzione</button>
+    <button onclick="downloadQR()">Download High-Res QR</button>
 </div>
 
 <section class="content-section">
     <div class="container">
         <div class="grid">
             <div>
-                <h2>Cos'è un QR Code Statico?</h2>
-                <p>Un QR Code statico contiene informazioni scritte direttamente nel pattern del codice. Una volta generato, il link non può essere modificato, il che lo rende ideale per <strong>schede tecniche, etichette di prodotto e materiali stampati</strong> che devono durare nel tempo senza costi di abbonamento o scadenze.</p>
+                <h2>What is a Static QR Code?</h2>
+                <p>A static QR code contains information encoded directly into the pattern. Once generated, the link cannot be changed, making it perfect for <strong>technical sheets, product labels, and printed materials</strong> that need to last without subscriptions or expiration dates.</p>
             </div>
             <div>
-                <h2>Qualità per la Stampa</h2>
-                <p>Il nostro generatore produce file a <strong>1000x1000 pixel</strong>. Questa risoluzione garantisce una nitidezza perfetta su documenti A4, brochure e packaging. Anche se ridimensionato a 2cm, il codice manterrà una densità di punti sufficiente per essere letto da qualsiasi smartphone.</p>
+                <h2>Print-Ready Quality</h2>
+                <p>Our generator produces <strong>1000x1000 pixel</strong> files. This resolution ensures perfect sharpness on A4 documents, brochures, and packaging. Even when resized to 2cm, the code maintains enough density for any smartphone to read.</p>
             </div>
         </div>
     </div>
@@ -107,32 +107,32 @@
 
 <section class="content-section bg-grey">
     <div class="container">
-        <h2>Come generare formati Vettoriali (SVG/EPS)</h2>
-        <p>Per utilizzi su grandi formati come vetrofanie, cartelloni o striscioni da 1 metro, è consigliabile utilizzare un formato vettoriale. Ecco come procedere con il nostro file:</p>
+        <h2>How to Generate Vector Formats (SVG/EPS)</h2>
+        <p>For large-scale uses like window decals or 1-meter banners, we recommend using a vector format. Here is how to process our file:</p>
         <ol>
-            <li>Scarica il file PNG ad alta risoluzione da questo sito.</li>
-            <li>Apri un software di grafica come <strong>Adobe Illustrator</strong> o il gratuito <strong>Inkscape</strong>.</li>
-            <li>Usa la funzione "Ricalco Immagine" (Image Trace) impostata su "Logo in bianco e nero".</li>
-            <li>Espandi il risultato: avrai un QR code vettoriale perfetto che potrai ingrandire all'infinito senza alcuna perdita di qualità.</li>
+            <li>Download the high-resolution PNG file from this site.</li>
+            <li>Open a graphic design software like <strong>Adobe Illustrator</strong> or the free <strong>Inkscape</strong>.</li>
+            <li>Use the "Image Trace" function set to "Black and White Logo".</li>
+            <li>Expand the result: you will have a perfect vector QR code that can be scaled infinitely without quality loss.</li>
         </ol>
     </div>
 </section>
 
 <section class="content-section">
     <div class="container">
-        <h2>Perché scegliere QR Generator PRO?</h2>
+        <h2>Why choose QR Generator PRO?</h2>
         <ul>
-            <li><strong>Gratis per sempre:</strong> Nessun limite di scansione o costi nascosti.</li>
-            <li><strong>Privacy Garantita:</strong> I tuoi dati non vengono salvati sui nostri server.</li>
-            <li><strong>Organizzazione Intelligente:</strong> I file scaricati vengono nominati automaticamente in base all'URL inserito per facilitare la gestione dei tuoi cataloghi.</li>
-            <li><strong>Correzione Errore Livello H:</strong> Massima robustezza anche se il codice viene parzialmente danneggiato o sporcato sulla superficie di stampa.</li>
+            <li><strong>Free Forever:</strong> No scan limits or hidden costs.</li>
+            <li><strong>Privacy Guaranteed:</strong> Your data is not saved on our servers.</li>
+            <li><strong>Smart Organization:</strong> Downloaded files are automatically named based on the URL for easy catalog management.</li>
+            <li><strong>Level H Error Correction:</strong> Maximum robustness even if the code surface is partially damaged or smudged.</li>
         </ul>
     </div>
 </section>
 
 <footer>
     <div class="container">
-        &copy; 2026 jckswebapps - Strumenti gratuiti per il web e la produzione tecnica.
+        &copy; 2026 jckswebapps - Free tools for web and technical production.
     </div>
 </footer>
 
@@ -170,7 +170,7 @@
         const canvas = document.getElementById('qr-canvas');
         const urlInput = document.getElementById('qr-input').value;
         if (!urlInput) {
-            alert("Per favore, inserisci prima un URL!");
+            alert("Please enter a URL first!");
             return;
         }
         const dynamicName = getFileNameFromUrl(urlInput);
