@@ -142,64 +142,11 @@
         &copy; 2026 jckswebapps - Outils gratuits pour le web et la production technique.
     </div>
 </footer>
-
-<script>
-    const qr = new QRious({
-        element: document.getElementById('qr-canvas'),
-        size: 1000,
-        level: 'H',
-        value: 'https://fastqrfree.com'
-    });
-
-    function generateQR() {
-        const val = document.getElementById('qr-input').value;
-        if (val.trim() !== "") {
-            qr.value = val;
-        }
-    }
-
-    function getFileNameFromUrl(url) {
-        if (!url) return "qrcode-jcks";
-        try {
-            let cleanUrl = url.replace(/^(https?:\/\/)/, '').replace(/\/$/, '');
-            let parts = cleanUrl.split('/');
-            let fileName = parts[parts.length - 1];
-            if (!fileName || fileName.includes('.')) {
-                fileName = parts[0].replace('www.', '');
-            }
-            return fileName.replace(/[^a-z0-9.-]/gi, '_').toLowerCase();
-        } catch (e) {
-            return "qrcode-jcks";
-        }
-    }
-
-    function downloadQR() {
-        const canvas = document.getElementById('qr-canvas');
-        const urlInput = document.getElementById('qr-input').value;
-        if (!urlInput) {
-            alert("Per favore, inserisci prima un URL!");
-            return;
-        }
-        const dynamicName = getFileNameFromUrl(urlInput);
-        const link = document.createElement('a');
-        link.download = dynamicName + '.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-    }
-</script>
+    
 <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #212529; color: white; padding: 15px; text-align: center; z-index: 10000; font-size: 14px;">
     Ce site utilise des cookies Google Analytics per améliorer votre expérience utilisateur. 
     <button onclick="acceptCookies()" style="background: var(--primary); border: none; color: white; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-left: 10px;">Accepter</button>
 </div>
-
-<script>
-function acceptCookies() {
-    document.getElementById('cookie-banner').style.display = 'none';
-    localStorage.setItem('cookies_accepted', 'true');
-}
-if (localStorage.getItem('cookies_accepted')) {
-    document.getElementById('cookie-banner').style.display = 'none';
-}
-</script>
+    
 </body>
 </html>
