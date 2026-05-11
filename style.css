@@ -24,7 +24,7 @@ input:focus { border-color: var(--primary); outline: none; }
 
 canvas { 
     background: white; padding: 15px; border: 1px solid #eee; 
-    border-radius: 12px; margin-bottom: 25px;
+    border-radius: 12px; margin-bottom: 5px;
     width: 250px !important; height: 250px !important;
 }
 
