@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Home Page / English (Default) -->
+  <url>
+    <loc>https://fastqrfree.com/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fastqrfree.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fastqrfree.com/"/>
+  </url>
+
+  <!-- Italiano -->
+  <url>
+    <loc>https://fastqrfree.com/it/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fastqrfree.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/"/>
+  </url>
+
+  <!-- Deutsch -->
+  <url>
+    <loc>https://fastqrfree.com/de/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fastqrfree.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/"/>
+  </url>
+
+  <!-- Français -->
+  <url>
+    <loc>https://fastqrfree.com/fr/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fastqrfree.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/"/>
+  </url>
+
+  <!-- Español -->
+  <url>
+    <loc>https://fastqrfree.com/es/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fastqrfree.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/"/>
+  </url>
+
+  <!-- Russian -->
+  <url>
+    <loc>https://fastqrfree.com/ru/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fastqrfree.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/"/>
+  </url>
+
+  <!-- Pagine chi-siamo (Esempio IT) -->
+  <url>
+    <loc>https://fastqrfree.com/it/chi-siamo.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
