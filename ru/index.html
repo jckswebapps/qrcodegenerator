@@ -1,1 +1,141 @@
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+    <script src="/common.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore QR Code Professionale | Alta Risoluzione Gratis</title>
+    <meta name="description" content="Generatore gratuito di codici QR statici ad alta risoluzione. Crea QR code pronti per la stampa (1000x1000px) per URL e testi. Senza registrazione né scadenze.">
+    <link rel="alternate" hreflang="en" href="https://fastqrfree.com/" />
+    <link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/" />
+    <link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/" />
+    <link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/" />
+    <link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/" />
+    <link rel="alternate" hreflang="x-default" href="https://fastqrfree.com/" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head><body>
+
+    <header class="main-header">
+    <div class="container header-flex">
+        <div class="logo">
+            <a href="/">FastQRfree<span>.com</span></a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="/it/chi-siamo.html">Chi Siamo</a></li>
+                <li class="lang-dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Italiano</a>
+                    <div class="dropdown-content">
+                        <a href="/">English (EN)</a>
+                        <a href="/it/">Italiano (IT)</a>
+                        <a href="/de/">Deutsch (DE)</a>
+                        <a href="/es/">Español (ES)</a>
+                        <a href="/fr/">Français (FR)</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Generatore QR Code Professionale</h1>
+        <p>Crea codici QR statici in alta risoluzione per uso commerciale, stampa e marketing.</p>
+    </div>
+</section>
+
+<div class="generator-card">
+    <input type="text" id="qr-input" placeholder="Incolla il tuo link qui (es. https://tuosito.it)" oninput="generateQR()">
+    <canvas id="qr-canvas"></canvas>
+    <button onclick="downloadQR()">Scarica QR Alta Risoluzione</button>
+</div>
+
+<section class="content-section">
+    <div class="container">
+        <div class="grid">
+            <div>
+                <h2>Cos'è un QR Code Statico?</h2>
+                <p>Un QR Code statico contiene informazioni scritte direttamente nel pattern del codice. Una volta generato, il link non può essere modificato, il che lo rende ideale per <strong>schede tecniche, etichette di prodotto e materiali stampati</strong> che devono durare nel tempo senza costi di abbonamento o scadenze.</p>
+            </div>
+            <div>
+                <h2>Qualità per la Stampa</h2>
+                <p>Il nostro generatore produce file a <strong>1000x1000 pixel</strong>. Questa risoluzione garantisce una nitidezza perfetta su documenti A4, brochure e packaging. Anche se ridimensionato a 2cm, il codice manterrà una densità di punti sufficiente per essere letto da qualsiasi smartphone.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section bg-grey">
+    <div class="container">
+        <h2>Come generare formati Vettoriali (SVG/EPS)</h2>
+        <p>Per utilizzi su grandi formati come vetrofanie, cartelloni o striscioni da 1 metro, è consigliabile utilizzare un formato vettoriale. Ecco come procedere con il nostro file:</p>
+        <ol>
+            <li>Scarica il file PNG ad alta risoluzione da questo sito.</li>
+            <li>Apri un software di grafica come <strong>Adobe Illustrator</strong> o il gratuito <strong>Inkscape</strong>.</li>
+            <li>Usa la funzione "Ricalco Immagine" (Image Trace) impostata su "Logo in bianco e nero".</li>
+            <li>Espandi il risultato: avrai un QR code vettoriale perfetto che potrai ingrandire all'infinito senza alcuna perdita di qualità.</li>
+        </ol>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>Perché scegliere QR Generator PRO?</h2>
+        <ul>
+            <li><strong>Gratis per sempre:</strong> Nessun limite di scansione o costi nascosti.</li>
+            <li><strong>Privacy Garantita:</strong> I tuoi dati non vengono salvati sui nostri server.</li>
+            <li><strong>Organizzazione Intelligente:</strong> I file scaricati vengono nominati automaticamente in base all'URL inserito per facilitare la gestione dei tuoi cataloghi.</li>
+            <li><strong>Correzione Errore Livello H:</strong> Massima robustezza anche se il codice viene parzialmente danneggiato o sporcato sulla superficie di stampa.</li>
+        </ul>
+    </div>
+</section>
+
+    <section class="content-section bg-grey">
+    <div class="container">
+        <h2>Domande Frequenti (FAQ)</h2>
+        <div class="faq-grid" style="margin-top: 40px;">
+            <div class="faq-item">
+                <strong>I codici QR generati hanno una scadenza?</strong>
+                <p>No, i nostri QR code sono statici. Ciò significa che l'informazione è codificata direttamente nel pattern e non scadrà mai. Assicurati solo che l'URL di destinazione rimanga attivo.</p>
+            </div>
+            <div class="faq-item">
+                <strong>C'è un limite al numero di scansioni?</strong>
+                <p>Nessun limite. Essendo codici statici, possono essere scansionati infinite volte senza costi o restrizioni.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Posso cambiare il link dopo la stampa?</strong>
+                <p>No. Nei codici statici il link è fisso. Per cambiare destinazione dovresti generare e stampare un nuovo codice.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Qual è la dimensione minima per la stampa?</strong>
+                <p>Consigliamo una dimensione minima di 2x2 cm per garantire che tutti gli smartphone possano leggerlo facilmente, specialmente se il link è molto lungo.</p>
+            </div>
+            <div class="faq-item">
+                <strong>I dati inseriti sono sicuri?</strong>
+                <p>Assolutamente. Non salviamo i tuoi URL né tracciamo i dati di scansione. Tutto avviene localmente nel tuo browser.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        &copy; 2026 jckswebapps - Strumenti gratuiti per il web e la produzione tecnica.
+    </div>
+</footer>
+    
+<div id="cookie-banner" style="position: fixed; bottom: 0; width: 100%; background: #212529; color: white; padding: 15px; text-align: center; z-index: 1000; font-size: 14px;">
+    Questo sito utilizza i cookie di Google Analytics per migliorare l'esperienza. 
+    <button onclick="acceptCookies()" style="background: var(--primary); border: none; color: white; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-left: 10px;">Accetta</button>
+</div>
+    
+</body>
+</html>
