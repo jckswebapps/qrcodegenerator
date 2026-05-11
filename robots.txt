@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+https://fastqrfree.com/sitemap.xml
