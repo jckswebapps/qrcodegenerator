@@ -140,7 +140,7 @@ footer { padding: 40px; text-align: center; color: var(--secondary); font-size: 
 }
 
 .dropdown-content a:hover {
-    background-color: var(--light);
+    background-color: var(--light); 
 }
 
 .lang-dropdown:hover .dropdown-content {
