@@ -102,3 +102,25 @@ document.addEventListener("DOMContentLoaded", function() {
         if (banner) banner.style.display = 'none';
     }
 });
+// Funzione per aggiornare il testo dello slider e rigenerare il QR
+function updateResolution(val) {
+    document.getElementById('res-value').innerText = val;
+    document.getElementById('res-value-alt').innerText = val;
+    
+    if (qr) {
+        qr.size = val; // Aggiorna la dimensione dell'oggetto QRious
+    }
+}
+
+// Modifica la tua funzione generateQR esistente se necessario
+function generateQR() {
+    const val = document.getElementById('qr-input').value;
+    const size = document.getElementById('res-slider').value; // Legge lo slider
+    
+    if (val.trim() !== "" && qr) {
+        qr.set({
+            value: val,
+            size: parseInt(size)
+        });
+    }
+}

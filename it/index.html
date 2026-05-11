@@ -56,6 +56,17 @@
 <div class="generator-card">
     <input type="text" id="qr-input" placeholder="Incolla il tuo link qui (es. https://tuosito.it)" oninput="generateQR()">
     <canvas id="qr-canvas"></canvas>
+    <div class="resolution-control" style="margin: 20px 0;">
+    <label for="res-slider" style="display: block; margin-bottom: 10px; color: var(--secondary); font-weight: 600;">
+        Risoluzione: <span id="res-value">1000</span> x <span id="res-value-alt">1000</span> Px
+    </label>
+    <input type="range" id="res-slider" min="200" max="2000" step="100" value="1000" 
+           style="width: 100%; cursor: pointer;" oninput="updateResolution(this.value)">
+    <div style="display: flex; justify-content: space-between; font-size: 12px; color: #999; margin-top: 5px;">
+        <span>Bassa qualità</span>
+        <span>Alta qualità</span>
+    </div>
+</div>
     <button onclick="downloadQR()">Scarica QR Alta Risoluzione</button>
 </div>
 
