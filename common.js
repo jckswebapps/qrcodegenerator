@@ -27,7 +27,8 @@ gtag('config', GA_ID);
         'it': '/it/',
         'de': '/de/',
         'es': '/es/',
-        'fr': '/fr/'
+        'fr': '/fr/',
+        'ru': '/ru/'
     };
 
     if (supportedLanguages[langCode]) {
