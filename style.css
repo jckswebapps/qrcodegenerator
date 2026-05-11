@@ -14,7 +14,7 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: 
 }
 
 input { 
-    width: 100%; padding: 15px; margin-bottom: 20px; 
+    width: 100%; padding: 15px; /*margin-bottom: 20px;*/ 
     border: 2px solid #dee2e6; border-radius: 12px; 
     font-size: 16px; transition: border-color 0.2s; 
     box-sizing: border-box; /* Evita che l'input esca dai bordi */
