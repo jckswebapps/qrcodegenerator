@@ -71,13 +71,12 @@ function getFileNameFromUrl(url) {
     } catch (e) { return "qrcode-jcks"; }
 }
 
-function downloadQR() {
+function downloadQR(format = 'png') {
     const canvas = document.getElementById('qr-canvas');
     const urlInput = document.getElementById('qr-input').value;
     
     if (!urlInput) {
-        // Messaggi di errore tradotti
-        const msgs = { 'it': 'Inserisci un URL!', 'en': 'Enter a URL!', 'de': 'URL eingeben!', 'es': '¡Ingresa un URL!', 'fr': 'Entrez une URL!' };
+        const msgs = { 'it': 'Inserisci un URL!', 'en': 'Enter a URL!', 'de': 'URL eingeben!', 'es': '¡Ingresa un URL!', 'fr': 'Entrez une URL!', 'ru': 'Введите URL!' };
         const lang = document.documentElement.lang || 'en';
         alert(msgs[lang] || msgs['en']);
         return;
@@ -85,8 +84,38 @@ function downloadQR() {
     
     const dynamicName = getFileNameFromUrl(urlInput);
     const link = document.createElement('a');
-    link.download = dynamicName + '.png';
-    link.href = canvas.toDataURL('image/png');
+
+    if (format === 'svg') {
+        // --- GENERAZIONE VETTORIALE (SVG) DIRETTAMENTE DA QRIOUS ---
+        const symbol = qr.toDataURL().split(',')[1]; // Forza QRious a elaborare internamente
+        const matrix = qr._qr.modules; // Accede alla matrice logica dei moduli (quadrati)
+        const count = matrix.length;
+        
+        let svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${count} ${count}" width="1000" height="1000" shape-rendering="crispEdges">\n`;
+        svgContent += `  <rect width="${count}" height="${count}" fill="#ffffff"/>\n`;
+        svgContent += `  <path fill="#000000" d="`;
+        
+        // Costruiamo il tracciato vettoriale unendo i quadratini neri
+        for (let r = 0; r < count; r++) {
+            for (let c = 0; c < count; c++) {
+                if (matrix[r][c]) {
+                    svgContent += `M${c} ${r}h1v1h-1z `;
+                }
+            }
+        }
+        
+        svgContent += `"/>\n</svg>`;
+        
+        // Creiamo il file per il download dell'SVG
+        const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
+        link.href = URL.createObjectURL(blob);
+        link.download = dynamicName + '.svg';
+    } else {
+        // --- GENERAZIONE STANDARD RASTER (PNG) ---
+        link.href = canvas.toDataURL('image/png');
+        link.download = dynamicName + '.png';
+    }
+    
     link.click();
 }
 
