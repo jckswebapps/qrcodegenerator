@@ -87,30 +87,32 @@ function downloadQR(format = 'png') {
 
     if (format === 'svg') {
         try {
-            const qrLogic = new QRious({
-                value: urlInput,
-                level: 'H'
-            });
+            // Assicuriamoci che l'oggetto QR globale sia aggiornato con il valore corrente dell'input
+            if (qr) {
+                qr.value = urlInput;
+            } else {
+                throw new Error("Oggetto QR non inizializzato");
+            }
             
-            const matrix = qrLogic._qr.modules;
+            // Accediamo alla matrice reale generata sul canvas dall'istanza attiva
+            const matrix = qr.api.modules; 
             const count = matrix.length;
             
             let svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${count} ${count}" width="1000" height="1000" shape-rendering="crispEdges">\n`;
             svgContent += `  <rect width="${count}" height="${count}" fill="#ffffff"/>\n`;
             svgContent += `  <path fill="#000000" fill-rule="evenodd" d="`;
             
-            // Algoritmo di ottimizzazione: unisce i moduli neri consecutivi sulla stessa riga
+            // Algoritmo di ottimizzazione geometrica delle righe
             for (let r = 0; r < count; r++) {
                 let c = 0;
                 while (c < count) {
                     if (matrix[r] && matrix[r][c]) {
                         let start = c;
-                        // Trova quanti quadratini neri consecutivi ci sono sulla riga
                         while (c < count && matrix[r][c]) {
                             c++;
                         }
                         let width = c - start;
-                        // Disegna un unico rettangolo lungo (width) invece di tanti quadratini da 1
+                        // Disegna un unico rettangolo unito per ridurre i punti di ancoraggio su Illustrator
                         svgContent += `M${start} ${r}h${width}v1h-${width}z `;
                     } else {
                         c++;
