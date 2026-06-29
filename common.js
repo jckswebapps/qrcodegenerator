@@ -192,3 +192,13 @@ function generateQR() {
         });
     }
 }
+// --- LOGICA MENU HAMBURGER MOBILE ---
+function toggleMenu() {
+    const menu = document.getElementById('nav-menu');
+    const toggleBtn = document.querySelector('.menu-toggle');
+    
+    if (menu && toggleBtn) {
+        menu.classList.toggle('active');
+        toggleBtn.classList.toggle('active');
+    }
+}
