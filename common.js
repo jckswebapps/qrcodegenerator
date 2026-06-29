@@ -104,31 +104,36 @@ function downloadSVG() {
     try {
         const dynamicName = getFileNameFromUrl(urlInput);
         
+        // Mappiamo la libreria in modo sicuro all'interno della funzione per evitare conflitti con la variabile globale 'qr'
+        const qrcodeAlgo = window.qrcode;
+        if (!qrcodeAlgo) {
+            throw new Error("La libreria di generazione SVG non è ancora stata caricata dalla CDN.");
+        }
+
         // Inizializziamo il generatore di QR vettoriale (0 = calcolo automatico della dimensione della griglia)
-        // Livello 'H' per la massima correzione dell'errore (come richiesto dagli standard del tuo sito)
+        // Livello 'H' per la massima correzione dell'errore
         const typeNumber = 0; 
         const errorCorrectionLevel = 'H';
-        const qrcode = qrcodeAlgo(typeNumber, errorCorrectionLevel);
+        const qrcodeInstance = qrcodeAlgo(typeNumber, errorCorrectionLevel);
         
-        qrcode.addData(urlInput);
-        qrcode.make();
+        qrcodeInstance.addData(urlInput);
+        qrcodeInstance.make();
         
-        // Estraiamo la matrice logica pulita dei moduli
-        const count = qrcode.getModuleCount();
+        // Estraiamo la griglia geometrica dei moduli
+        const count = qrcodeInstance.getModuleCount();
         
-        // Creiamo la struttura dell'SVG. L'attributo fill-rule="evenodd" e un unico tag <path> 
-        // dicono ad Illustrator che si tratta di un singolo tracciato composto unito!
+        // Creiamo l'SVG ottimizzato ad un unico tracciato composto (Compound Path) per Illustrator
         let svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${count} ${count}" width="1000" height="1000" shape-rendering="crispEdges">\n`;
         svgContent += `  <rect width="${count}" height="${count}" fill="#ffffff"/>\n`;
         svgContent += `  <path fill="#000000" fill-rule="evenodd" d="`;
         
-        // Algoritmo di ottimizzazione geometrica delle righe per eliminare la griglia di quadratini
+        // Algoritmo di ottimizzazione geometrica: unisce le linee orizzontali per evitare la griglia di quadratini
         for (let r = 0; r < count; r++) {
             let c = 0;
             while (c < count) {
-                if (qrcode.isDark(r, c)) {
+                if (qrcodeInstance.isDark(r, c)) {
                     let start = c;
-                    while (c < count && qrcode.isDark(r, c)) {
+                    while (c < count && qrcodeInstance.isDark(r, c)) {
                         c++;
                     }
                     let width = c - start;
@@ -141,7 +146,7 @@ function downloadSVG() {
         
         svgContent += `"/>\n</svg>`;
         
-        // Download sicuro e istantaneo compatibile con tutti i browser
+        // Eseguiamo il download sicuro del file vettoriale
         const link = document.createElement('a');
         link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgContent);
         link.download = dynamicName + '.svg';
@@ -152,10 +157,6 @@ function downloadSVG() {
         alert("Errore durante la generazione dell'SVG. Utilizza il formato PNG.");
     }
 }
-
-// Nota tecnica di sicurezza: la libreria qrcode-generator espone la funzione globale come 'qrcode'
-// Per evitare conflitti con la tua variabile globale 'let qr', la mappiamo internamente come 'qrcodeAlgo'
-const qrcodeAlgo = window.qrcode;
 
 // --- LOGICA COOKIE ---
 function acceptCookies() {
