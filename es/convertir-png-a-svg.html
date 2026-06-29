@@ -1,1 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Convertir PNG a SVG Vectorial Gratis | FastQRfree</title>
+    <meta name="description" content="Guía paso a paso para convertir PNG a SVG vectorial gratis. Aprende cómo transformar tus imágenes png a svg usando Adobe Illustrator e Inkscape.">
+    <link rel="alternate" hreflang="en" href="https://fastqrfree.com/" />
+    <link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/" />
+    <link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/" />
+    <link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/" />
+    <link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/" />
+    <link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/" />
+    <link rel="alternate" hreflang="x-default" href="https://fastqrfree.com/" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="/common.js"></script>
+</head>
+<body>
 
+    <header class="main-header">
+    <div class="container header-flex">
+        <div class="logo">
+            <a href="/">FastQRfree<span>.com</span></a>
+        </div>
+        <!-- Bottone Hamburger visibile solo su Mobile -->
+        <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+         <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <!--li><a href="/es/quienes-somos.html">Sobre Nosotros</a></li-->
+                    <li><a href="/es/donar.html">Apóyanos</a></li>
+                <li class="lang-dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Español</a>
+                    <div class="dropdown-content">
+                        <a href="/">English (EN)</a>
+                        <a href="/it/">Italiano (IT)</a>
+                        <a href="/de/">Deutsch (DE)</a>
+                        <a href="/es/">Español (ES)</a>
+                        <a href="/fr/">Français (FR)</a>
+                        <a href="/ru/">Русский (RU)</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Generador de Códigos QR Profesional</h1>
+        <p>Crea códigos QR estáticos en alta resolución gratis para uso comercial y marketing.</p>
+    </div>
+</section>
+
+<div class="generator-card">
+    <input type="text" id="qr-input" placeholder="Pega tu enlace aquí (ej. https://tusitio.es)" oninput="generateQR()">
+    <canvas id="qr-canvas"></canvas>
+    <div class="resolution-control" style="margin: 0 0 20px 0;">
+    <label for="res-slider" style="display: block; margin-bottom: 10px; color: var(--secondary); font-weight: 600;">
+        Resolución: <span id="res-value">1000</span> x <span id="res-value-alt">1000</span> Px
+    </label>
+    <input type="range" id="res-slider" min="200" max="2000" step="100" value="1000" 
+           style="width: 100%; cursor: pointer;" oninput="updateResolution(this.value)">
+    <div style="display: flex; justify-content: space-between; font-size: 12px; color: #999; margin-top: -10px;">
+        <span>Baja calidad</span>
+        <span>Alta calidad</span>
+    </div>
+</div>
+    <div style="display: flex; gap: 15px; margin-top: 10px;">
+    <button onclick="downloadPNG()" style="flex: 1;">Descargar PNG</button>
+    <button onclick="downloadSVG()" style="flex: 1; background-color: #6c757d;">Descargar SVG (Vectorial)</button>
+</div>
+</div>
+
+<section class="content-section">
+    <div class="container">
+        <div class="grid">
+            <div>
+                <h2>¿Qué es un Código QR Estático?</h2>
+                <p>Un código QR estático contiene información escrita directamente en el patrón del código. Una vez generado, el enlace no se puede cambiar, lo que lo hace ideal para <strong>fichas técnicas, etiquetas de productos y materiales impresos</strong> duraderos sin costes de suscripción.</p>
+            </div>
+            <div>
+                <h2>Calidad para Impresión</h2>
+                <p>Nuestro generador produce archivos de <strong>2000x2000 píxeles</strong>. Esta resolución garantiza una nitidez perfecta en documentos A4, folletos y embalajes. Incluso si se reduce a 2 cm, el código mantendrá la densidad necesaria para ser leído por cualquier móvil.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hero">
+    <div class="container">
+        <h1>Cómo Convertir PNG a SVG Vectorial</h1>
+        <p>Guía profesional para transformar archivos PNG o JPG en trazados vectoriales (SVG, EPS) limpios para impresión.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>¿Por qué cambiar el formato de formato PNG SVG a Vectorial?</h2>
+        <p>Las imágenes en formato <strong>PNG</strong> son archivos ráster compuestos por una cuadrícula fija de píxeles. Si amplías un archivo PNG más allá de sus dimensiones originales, perderá nitidez rápidamente, mostrando bordes borrosos o pixelados. Esto representa un problema crítico al imprimir logotipos o códigos QR en formatos grandes.</p>
+        <p>Por el contrario, los formatos <strong>vectoriales (como el SVG)</strong> se basan en fórmulas matemáticas y coordenadas. Esto significa che puedes escalar un archivo de <strong>png a svg</strong> al infinito sin perder absolutamente nada de calidad: los bordes permanecerán 100% nítidos en cualquier soporte, desde tarjetas de presentación hasta lonas gigantes.</p>
+        
+        <div class="grid" style="margin-top: 30px;">
+            <div>
+                <h3>Generación SVG Nativa Directa</h3>
+                <p>Aunque nuestra herramienta te permite <strong>convertir png to svg</strong> directamente con un solo clic con trazados limpios, aprender a realizar la conversión manual te dará un control total sobre tus recursos gráficos corporativos.</p>
+            </div>
+            <div>
+                <h3>Estándares de Impresión Comercial</h3>
+                <p>En el diseño profesional, los trazados vectoriales son obligatorios para trabajos de serigrafía, corte de vinilo, grabado láser e impresiones digitales de alta fidelidad.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section bg-grey">
+    <div class="container">
+        <h2>Método 1: Convertir PNG a SVG en Adobe Illustrator</h2>
+        <p>Si utilizas el software de diseño vectorial estándar de la industria, puedes <strong>convertir png a svg con Illustrator</strong> en cuestión de segundos usando su motor de calco automático:</p>
+        
+        <ol style="line-height: 1.8; margin-left: 20px; margin-top: 20px;">
+            <li><strong>Coloca la imagen:</strong> Abre Adobe Illustrator, crea un nuevo lienzo y arrastra tu archivo PNG descargado al espacio de trabajo.</li>
+            <li><strong>Calco de imagen:</strong> Selecciona la imagen, ve al panel de Propiedades (o al menú superior) y haz clic en <strong>Calco de imagen</strong> (Image Trace). Elige el ajuste preestablecido <em>"Logotipo en blanco y negro"</em> o <em>"Siluetas"</em>.</li>
+            <li><strong>Ajustes Avanzados:</strong> Abre el panel avanzado de calco. Ajusta los vértices al 100% para obtener esquinas perfectamente cuadradas. Marca de forma obligatoria la casilla <strong>"Omitir blanco"</strong> (Ignore White) para eliminar automáticamente el fondo del lienzo y conservar solo el traçado negro limpio.</li>
+            <li><strong>Expandir trazados:</strong> Haz clic en el botón <strong>"Expandir"</strong> en la barra superior para transformar la previsualización del calco en puntos de anclaje vectoriales editables.</li>
+            <li><strong>Guardar en SVG/EPS:</strong> Ve a <em>Archivo > Guardar como</em> y selecciona el formato <strong>SVG</strong> o <strong>Illustrator EPS</strong> en el menú desplegable.</li>
+        </ol>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>Método 2: Trazado Gráfico Gratis con Inkscape (Alternativa Open-Source)</h2>
+        <p>Si no tienes una suscripción de Adobe, puedes <strong>convertir png a svg con Inkscape</strong> de forma 100% gratuita. Este software de código abierto ofrece resultados profesionales con estos pasos:</p>
+        
+        <ul style="line-height: 1.8; margin-left: 20px; margin-top: 20px;">
+            <li>Abre Inkscape e importa tu imagen ráster desde el menú <em>Archivo > Importar</em>.</li>
+            <li>Haz clic sobre la imagen para seleccionarla y luego ve al menú superior en <strong>Trayecto > Vectorizar mapa de bits</strong>.</li>
+            <li>En el panel de configuración de la derecha, selecciona "Corte de luminosidad", verifica la vista previa en vivo y haz clic en <strong>Aplicar</strong>.</li>
+            <li>Desplaza el nuevo trayecto vectorial generado hacia un lado y elimina la imagen PNG pixelada original del fondo.</li>
+            <li>Guarda tu archivo seleccionando <em>Archivo > Guardar como</em> y elige el formato <strong>SVG estándar</strong>.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="content-section bg-grey">
+    <div class="container">
+        <h2>Preguntas Frecuentes (FAQ) sobre Archivos Vectoriales</h2>
+        <div class="faq-grid" style="margin-top: 40px;">
+            <div class="faq-item">
+                <strong>¿El archivo SVG de FastQRfree ya es vectorial?</strong>
+                <p>Sí, absolutamente. Nuestro botón "Download SVG" calcula las coordenadas matemáticas y exporta un archivo vectorial nativo directamente desde tu navegador, sin pérdidas de calidad.</p>
+            </div>
+            <div class="faq-item">
+                <strong>¿Cómo fusionar los módulos del código QR en una sola forma en Illustrator?</strong>
+                <p>Abre el archivo SVG en Illustrator, selecciona todos los elementos y haz clic en el icono <strong>"Unificar" (Unite)</strong> dentro del panel Busca trazos (Pathfinder). Se convertirá al instante en un único trazado compuesto muy ligero.</p>
+            </div>
+            <div class="faq-item">
+                <strong>¿Debo elegir formato SVG o EPS para imprimir?</strong>
+                <p>El formato SVG es la opción moderna ideal para la web, aplicaciones y Canva. El EPS es un formato tradicional compatible con maquinarias de imprenta más antiguas. Ambos ofrecen la misma calidad de escalado infinito.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>¿Por qué elegir FastQRfree?</h2>
+        <ul>
+            <li><strong>Gratis para siempre:</strong> Sin límites de escaneo ni costes ocultos.</li>
+            <li><strong>Privacidad garantizada:</strong> Tus datos no se guardan en nuestros servidores.</li>
+            <li><strong>Organización inteligente:</strong> Los archivos se nombran automáticamente según la URL para facilitar la gestión de tus catálogos.</li>
+            <li><strong>Corrección de errores Nivel H:</strong> Máxima robustezza incluso si el código se daña o se ensucia parcialmente.</li>
+        </ul>
+    </div>
+</section>
+
+    <section class="content-section bg-grey">
+    <div class="container">
+        <h2>Preguntas Frecuentes (FAQ)</h2>
+        <div class="faq-grid" style="margin-top: 40px;">
+            <div class="faq-item">
+                <strong>¿Los códigos QR caducan?</strong>
+                <p>No, nuestros códigos son estáticos. La información está codificada directamente en el patrón y no caduca nunca. Solo asegúrate de que la URL de destino siga activa.</p>
+            </div>
+            <div class="faq-item">
+                <strong>¿Hay un límite de escaneos?</strong>
+                <p>No hay límites. Al ser códigos estáticos, pueden escanearse infinitas veces sin costes ni restricciones.</p>
+            </div>
+            <div class="faq-item">
+                <strong>¿Puedo cambiar el enlace después de imprimirlo?</strong>
+                <p>No. En los códigos estáticos, el enlace es permanente. Para cambiar el destino, deberás generar e imprimir uno nuevo.</p>
+            </div>
+            <div class="faq-item">
+                <strong>¿Cuál es el tamaño mínimo para imprimir?</strong>
+                <p>Recomendamos un tamaño mínimo de 2x2 cm para asegurar que todos los móviles puedan leerlo, especialmente con URLs largas.</p>
+            </div>
+            <div class="faq-item">
+                <strong>¿Mis datos están seguros?</strong>
+                <p>Totalmente. No guardamos tus URLs ni rastreamos datos de escaneo. Todo sucede localmente en tu navegador.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        &copy; 2026 jckswebapps - Herramientas gratuitas para la web y la producción técnica.
+    </div>
+</footer>
+
+<div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #212529; color: white; padding: 15px; text-align: center; z-index: 10000; font-size: 14px;">
+    Este sitio web utiliza cookies de Google Analytics para mejorar la experiencia del usuario. 
+    <button onclick="acceptCookies()" style="background: var(--primary); border: none; color: white; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-left: 10px;">Aceptar</button>
+</div>
+
+</body>
+</html>
