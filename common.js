@@ -86,9 +86,7 @@ function downloadQR(format = 'png') {
     const link = document.createElement('a');
 
     if (format === 'svg') {
-        // --- APCOCCIO MATEMATICO PULITO: RIGENERIAMO L'SVG TRAMITE L'ALGORITMO NATIVO DI QRIOUS ---
         try {
-            // Sfruttiamo il costruttore interno di QRious per avere la griglia logica pura senza canvas
             const qrLogic = new QRious({
                 value: urlInput,
                 level: 'H'
@@ -97,22 +95,31 @@ function downloadQR(format = 'png') {
             const matrix = qrLogic._qr.modules;
             const count = matrix.length;
             
-            // Creiamo il codice SVG vettoriale standard
             let svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${count} ${count}" width="1000" height="1000" shape-rendering="crispEdges">\n`;
             svgContent += `  <rect width="${count}" height="${count}" fill="#ffffff"/>\n`;
-            svgContent += `  <path fill="#000000" d="`;
+            svgContent += `  <path fill="#000000" fill-rule="evenodd" d="`;
             
+            // Algoritmo di ottimizzazione: unisce i moduli neri consecutivi sulla stessa riga
             for (let r = 0; r < count; r++) {
-                for (let c = 0; c < count; c++) {
+                let c = 0;
+                while (c < count) {
                     if (matrix[r] && matrix[r][c]) {
-                        svgContent += `M${c} ${r}h1v1h-1z `;
+                        let start = c;
+                        // Trova quanti quadratini neri consecutivi ci sono sulla riga
+                        while (c < count && matrix[r][c]) {
+                            c++;
+                        }
+                        let width = c - start;
+                        // Disegna un unico rettangolo lungo (width) invece di tanti quadratini da 1
+                        svgContent += `M${start} ${r}h${width}v1h-${width}z `;
+                    } else {
+                        c++;
                     }
                 }
             }
             
             svgContent += `"/>\n</svg>`;
             
-            // Download sicuro usando l'URL dei dati testuali (metodo compatibile al 100% con tutti i browser)
             link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgContent);
             link.download = dynamicName + '.svg';
         } catch (error) {
@@ -121,7 +128,6 @@ function downloadQR(format = 'png') {
             return;
         }
     } else {
-        // Esportazione standard PNG dal canvas esistente
         link.href = canvas.toDataURL('image/png');
         link.download = dynamicName + '.png';
     }
