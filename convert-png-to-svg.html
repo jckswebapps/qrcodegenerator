@@ -1,1 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free High-Resolution QR Code Generator - FastQRfree</title>
+    <meta name="description" content="Free high-resolution static QR code generator. Create print-ready QR codes (2000x2000px) for URLs and text. No registration, no expiration, 100% free.">
+    <link rel="alternate" hreflang="en" href="https://fastqrfree.com/" />
+    <link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/" />
+    <link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/" />
+    <link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/" />
+    <link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/" />
+    <link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/" />
+    <link rel="alternate" hreflang="x-default" href="https://fastqrfree.com/" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="/common.js"></script>
+    
+</head>
+<body>
 
+<header class="main-header">
+    <div class="container header-flex">
+        <div class="logo">
+            <a href="/">FastQRfree<span>.com</span></a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <!--li><a href="/about.html">About Us</a></li-->
+                <li><a href="/donate.html">Support Us</a></li>
+                <li class="lang-dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">English</a>
+                    <div class="dropdown-content">
+                        <a href="/">English (EN)</a>
+                        <a href="/it/">Italiano (IT)</a>
+                        <a href="/de/">Deutsch (DE)</a>
+                        <a href="/es/">Español (ES)</a>
+                        <a href="/fr/">Français (FR)</a>
+                        <a href="/ru/">Русский (RU)</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Free Professional QR Code Generator</h1>
+        <p>Create high-resolution static QR codes for commercial use, print, and marketing.</p>
+    </div>
+</section>
+
+<div class="generator-card">
+    <input type="text" id="qr-input" placeholder="Paste your link here (e.g., https://yoursite.com)" oninput="generateQR()">
+    <canvas id="qr-canvas"></canvas>
+    <div class="resolution-control" style="margin: 0 0 20px 0;">
+    <label for="res-slider" style="display: block; margin-bottom: 10px; color: var(--secondary); font-weight: 600;">
+        Resolution: <span id="res-value">1000</span> x <span id="res-value-alt">1000</span> Px
+    </label>
+    <input type="range" id="res-slider" min="200" max="2000" step="100" value="1000" 
+           style="width: 100%; cursor: pointer;" oninput="updateResolution(this.value)">
+    <div style="display: flex; justify-content: space-between; font-size: 12px; color: #999; margin-top: -10px;">
+        <span>Low quality</span>
+        <span>High quality</span>
+    </div>
+</div>
+    <!-- Nuovi bottoni affiancati per la scelta del formato -->
+    <div style="display: flex; gap: 15px; margin-top: 10px;">
+    <button onclick="downloadPNG()" style="flex: 1;">Download PNG</button>
+    <button onclick="downloadSVG()" style="flex: 1; background-color: #6c757d;">Download SVG (Vector)</button>
+</div>
+</div>
+
+<section class="content-section">
+    <div class="container">
+        <div class="grid">
+            <div>
+                <h2>What is a Static QR Code?</h2>
+                <p>A static QR code contains information encoded directly into the pattern. Once generated, the link cannot be changed, making it perfect for <strong>technical sheets, product labels, and printed materials</strong> that need to last without subscriptions or expiration dates.</p>
+            </div>
+            <div>
+                <h2>Print-Ready Quality</h2>
+                <p>Our generator produces <strong>2000x2000 pixel</strong> files. This resolution ensures perfect sharpness on A4 documents, brochures, and packaging. Even when resized to 2cm, the code maintains enough density for any smartphone to read.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section bg-grey">
+    <div class="container">
+        <h2>How to Generate Vector Formats (SVG/EPS)</h2>
+        <p>For large-scale uses like window decals or 1-meter banners, we recommend using a vector format. Here is how to process our file:</p>
+        <ol>
+            <li>Download the high-resolution PNG file from this site.</li>
+            <li>Open a graphic design software like <strong>Adobe Illustrator</strong> or the free <strong>Inkscape</strong>.</li>
+            <li>Use the "Image Trace" function set to "Black and White Logo".</li>
+            <li>Expand the result: you will have a perfect vector QR code that can be scaled infinitely without quality loss.</li>
+        </ol>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>Why choose QR Generator PRO?</h2>
+        <ul>
+            <li><strong>Free Forever:</strong> No scan limits or hidden costs.</li>
+            <li><strong>Privacy Guaranteed:</strong> Your data is not saved on our servers.</li>
+            <li><strong>Smart Organization:</strong> Downloaded files are automatically named based on the URL for easy catalog management.</li>
+            <li><strong>Level H Error Correction:</strong> Maximum robustness even if the code surface is partially damaged or smudged.</li>
+        </ul>
+    </div>
+</section>
+
+    <section class="content-section bg-grey">
+    <div class="container">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-grid" style="margin-top: 40px;">
+            <div class="faq-item">
+                <strong>Do the generated QR codes expire?</strong>
+                <p>No, our QR codes are static. This means the information is encoded directly into the pattern and will never expire. Just ensure your destination URL remains active.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Is there a scan limit?</strong>
+                <p>There are no limits. Since they are static codes, they can be scanned an infinite number of times with no costs or restrictions.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Can I change the link after printing?</strong>
+                <p>No. In static codes, the link is permanent. To change the destination, you would need to generate and print a new code.</p>
+            </div>
+            <div class="faq-item">
+                <strong>What is the minimum size for printing?</strong>
+                <p>We recommend a minimum size of 2x2 cm (0.8x0.8 inches) to ensure all smartphones can read it easily, especially for longer URLs.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Is my data safe?</strong>
+                <p>Absolutely. We do not store your URLs or track scan data. Everything happens locally in your browser.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        &copy; 2026 jckswebapps - Free tools for web and technical production.
+    </div>
+</footer>
+
+<div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #212529; color: white; padding: 15px; text-align: center; z-index: 10000; font-size: 14px;">
+    This website uses Google Analytics cookies to improve your experience. 
+    <button onclick="acceptCookies()" style="background: var(--primary); border: none; color: white; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-left: 10px;">Accept</button>
+</div>
+    
+</body>
+</html>
