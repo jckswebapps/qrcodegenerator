@@ -52,42 +52,25 @@
 
 <section class="hero">
     <div class="container">
-        <h1>Free Professional QR Code Generator</h1>
-        <p>Create high-resolution static QR codes for commercial use, print, and marketing.</p>
+        <h1>Da PNG a Vettoriale</h1>
+        <p>Guida professionale per convertire file raster in tracciati scalabili (SVG, EPS, PDF).</p>
     </div>
 </section>
 
-<div class="generator-card">
-    <input type="text" id="qr-input" placeholder="Paste your link here (e.g., https://yoursite.com)" oninput="generateQR()">
-    <canvas id="qr-canvas"></canvas>
-    <div class="resolution-control" style="margin: 0 0 20px 0;">
-    <label for="res-slider" style="display: block; margin-bottom: 10px; color: var(--secondary); font-weight: 600;">
-        Resolution: <span id="res-value">1000</span> x <span id="res-value-alt">1000</span> Px
-    </label>
-    <input type="range" id="res-slider" min="200" max="2000" step="100" value="1000" 
-           style="width: 100%; cursor: pointer;" oninput="updateResolution(this.value)">
-    <div style="display: flex; justify-content: space-between; font-size: 12px; color: #999; margin-top: -10px;">
-        <span>Low quality</span>
-        <span>High quality</span>
-    </div>
-</div>
-    <!-- Nuovi bottoni affiancati per la scelta del formato -->
-    <div style="display: flex; gap: 15px; margin-top: 10px;">
-    <button onclick="downloadPNG()" style="flex: 1;">Download PNG</button>
-    <button onclick="downloadSVG()" style="flex: 1; background-color: #6c757d;">Download SVG (Vector)</button>
-</div>
-</div>
-
 <section class="content-section">
     <div class="container">
-        <div class="grid">
+        <h2>Perché convertire una PNG in Vettoriale?</h2>
+        <p>Le immagini in formato <strong>PNG</strong> sono composte da pixel: se vengono ingrandite oltre la loro risoluzione originale, perdono definizione e mostrano i bordi sgranati o sfocati. Questo è un problema critico nella stampa tipografica di grande formato (cartelloni, packaging, striscioni).</p>
+        <p>I file <strong>Vettoriali (SVG, EPS)</strong> si basano invece su coordinate matematiche. Possono essere scalati all'infinito senza alcuna perdita di qualità, garantendo che i bordi dei quadratini del codice QR rimangano perfettamente nitidi al 100% su qualsiasi supporto.</p>
+        
+        <div class="grid" style="margin-top: 30px;">
             <div>
-                <h2>What is a Static QR Code?</h2>
-                <p>A static QR code contains information encoded directly into the pattern. Once generated, the link cannot be changed, making it perfect for <strong>technical sheets, product labels, and printed materials</strong> that need to last without subscriptions or expiration dates.</p>
+                <h3>Il vantaggio di FastQRfree</h3>
+                <p>Anche se il nostro tool permette il download diretto in formato SVG nativo, comprendere come convertire o ottimizzare un file raster ti permette di gestire qualsiasi elemento grafico aziendale con flessibilità.</p>
             </div>
             <div>
-                <h2>Print-Ready Quality</h2>
-                <p>Our generator produces <strong>2000x2000 pixel</strong> files. This resolution ensures perfect sharpness on A4 documents, brochures, and packaging. Even when resized to 2cm, the code maintains enough density for any smartphone to read.</p>
+                <h3>Standard Professionali</h3>
+                <p>Nelle arti grafiche e in tipografia, i formati SVG ed EPS sono lo standard assoluto richiesto dalle macchine da stampa per incisioni, serigrafia e stampe digitali ad alta fedeltà.</p>
             </div>
         </div>
     </div>
@@ -95,52 +78,49 @@
 
 <section class="content-section bg-grey">
     <div class="container">
-        <h2>How to Generate Vector Formats (SVG/EPS)</h2>
-        <p>For large-scale uses like window decals or 1-meter banners, we recommend using a vector format. Here is how to process our file:</p>
-        <ol>
-            <li>Download the high-resolution PNG file from this site.</li>
-            <li>Open a graphic design software like <strong>Adobe Illustrator</strong> or the free <strong>Inkscape</strong>.</li>
-            <li>Use the "Image Trace" function set to "Black and White Logo".</li>
-            <li>Expand the result: you will have a perfect vector QR code that can be scaled infinitely without quality loss.</li>
+        <h2>Metodo 1: Conversione Professionale con Adobe Illustrator</h2>
+        <p>Se utilizzi il software di grafica vettoriale standard del settore, la conversione richiede pochissimi passaggi grazie al motore di tracciamento integrato:</p>
+        
+        <ol style="line-height: 1.8; margin-left: 20px; margin-top: 20px;">
+            <li><strong>Inserisci l'immagine:</strong> Apri Adobe Illustrator e trascina il file PNG scaricato all'interno del tavolo da lavoro.</li>
+            <li><strong>Ricalco Immagine:</strong> Seleziona l'immagine, vai nel menu superiore (o nel pannello Proprietà) e clicca su <strong>Ricalco Immagine</strong> (Image Trace). Scegli l'opzione <em>"Logo in bianco e nero"</em> o <em>"Silhouette"</em>.</li>
+            <li><strong>Impostazioni Avanzate:</strong> Apri il pannello del Ricalco e, sotto la voce "Avanzate", spunta la casella <strong>"Ignora bianco"</strong> per eliminare automaticamente lo sfondo e mantenere solo il tracciato nero. Imposta l'angolo al 100% per avere angoli perfettamente squadrati.</li>
+            <li><strong>Espandi il tracciato:</strong> Clicca sul pulsante <strong>"Espandi"</strong> nella barra superiore per trasformare il ricalco in tracciati geometrici modificabili.</li>
+            <li><strong>Salva in EPS/SVG:</strong> Vai su <em>File > Salva come</em> e seleziona il formato <strong>Illustrator EPS</strong> o <strong>SVG</strong>.</li>
         </ol>
     </div>
 </section>
 
 <section class="content-section">
     <div class="container">
-        <h2>Why choose QR Generator PRO?</h2>
+        <h2>Metodo 2: Alternative Gratuite e Open Source (Inkscape)</h2>
+        <p>Se non possiedi una licenza Adobe, puoi ottenere lo stesso identico risultato professionale utilizzando <strong>Inkscape</strong>, un software vettoriale completamente gratuito:</p>
+        
         <ul>
-            <li><strong>Free Forever:</strong> No scan limits or hidden costs.</li>
-            <li><strong>Privacy Guaranteed:</strong> Your data is not saved on our servers.</li>
-            <li><strong>Smart Organization:</strong> Downloaded files are automatically named based on the URL for easy catalog management.</li>
-            <li><strong>Level H Error Correction:</strong> Maximum robustness even if the code surface is partially damaged or smudged.</li>
+            <li>Importa la PNG in Inkscape tramite <em>File > Importa</em>.</li>
+            <li>Seleziona l'immagine e vai nel menu in alto su <strong>Tracciato > Vettorizza bitmap</strong>.</li>
+            <li>Nel pannello che appare a destra, seleziona "Taglio luminosità" e clicca su "Aggiorna" e poi "Applica".</li>
+            <li>Trascina via il nuovo livello vettoriale generato e cancella la vecchia immagine PNG di sfondo.</li>
+            <li>Salva il file in formato <em>"SVG Inkscape"</em> o <em>"SVG standard"</em>.</li>
         </ul>
     </div>
 </section>
 
-    <section class="content-section bg-grey">
+<section class="content-section bg-grey">
     <div class="container">
-        <h2>Frequently Asked Questions (FAQ)</h2>
+        <h2>Domande Frequenti sulla Gestione Vettoriale</h2>
         <div class="faq-grid" style="margin-top: 40px;">
             <div class="faq-item">
-                <strong>Do the generated QR codes expire?</strong>
-                <p>No, our QR codes are static. This means the information is encoded directly into the pattern and will never expire. Just ensure your destination URL remains active.</p>
+                <strong>I file SVG generati da FastQRfree sono pronti?</strong>
+                <p>Sì, il nostro pulsante "Download SVG" crea un file vettoriale nativo con tracciati uniti. Non hai bisogno di ricalcarlo, è già pronto per Illustrator.</p>
             </div>
             <div class="faq-item">
-                <strong>Is there a scan limit?</strong>
-                <p>There are no limits. Since they are static codes, they can be scanned an infinite number of times with no costs or restrictions.</p>
+                <strong>Come unire tutti i quadratini in un unico blocco?</strong>
+                <p>Se apri il nostro SVG su Illustrator e vedi più segmenti, ti basta selezionare tutto e cliccare sull'icona <strong>"Unifica"</strong> nel pannello Elaborazione Tracciati (Pathfinder) per fonderli in una forma complessa unica.</p>
             </div>
             <div class="faq-item">
-                <strong>Can I change the link after printing?</strong>
-                <p>No. In static codes, the link is permanent. To change the destination, you would need to generate and print a new code.</p>
-            </div>
-            <div class="faq-item">
-                <strong>What is the minimum size for printing?</strong>
-                <p>We recommend a minimum size of 2x2 cm (0.8x0.8 inches) to ensure all smartphones can read it easily, especially for longer URLs.</p>
-            </div>
-            <div class="faq-item">
-                <strong>Is my data safe?</strong>
-                <p>Absolutely. We do not store your URLs or track scan data. Everything happens locally in your browser.</p>
+                <strong>Quale formato scegliere tra SVG ed EPS?</strong>
+                <p>L'SVG è il formato moderno ideale per il web, l'abbigliamento personalizzato e i software come Canva. L'EPS è il formato legacy preferito dalle vecchie macchine da stampa tipografiche. Entrambi offrono la stessa identica qualità infinita.</p>
             </div>
         </div>
     </div>
