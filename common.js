@@ -86,23 +86,56 @@ function downloadQR(format = 'png') {
     const link = document.createElement('a');
 
     if (format === 'svg') {
-        // 1. Forza la rigenerazione interna per essere sicuri che la matrice sia aggiornata
-        qr.value = urlInput; 
+        // --- ESTRAZIONE DELLA MATRICE DIRETTAMENTE DAL CANVAS ---
+        const ctx = canvas.getContext('2d');
+        const size = canvas.width;
         
-        // 2. Accede alla matrice reale dei moduli (quadratini neri/bianchi)
-        const matrix = qr._qr.modules; 
-        const count = matrix.length;
+        // QRious usa una griglia definita. Troviamo il numero esatto di moduli analizzando la prima riga
+        const imgData = ctx.getImageData(0, 0, size, size).data;
         
-        // 3. Inizializza il file SVG con viewBox basata sul numero di moduli (es. 21x21, 25x25, ecc.)
+        // Calcoliamo la dimensione del singolo modulo (quadratino) in pixel
+        let moduleSize = 1;
+        for (let x = 0; x < size; x++) {
+            const index = x * 4;
+            // Se incontriamo il primo pixel nero (R=0, G=0, B=0)
+            if (imgData[index] === 0 && imgData[index+1] === 0 && imgData[index+2] === 0) {
+                // Contiamo quanto è lungo questo blocco nero per capire la dimensione del modulo
+                let mWidth = 0;
+                while ((x + mWidth) < size) {
+                    const nextIdx = (x + mWidth) * 4;
+                    if (imgData[nextIdx] === 0) {
+                        mWidth++;
+                    } else {
+                        break;
+                    }
+                }
+                if (mWidth > 0) {
+                    moduleSize = mWidth;
+                    break;
+                }
+            }
+        }
+        
+        const count = Math.round(size / moduleSize);
+        
+        // Inizializziamo il file vettoriale SVG
         let svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${count} ${count}" width="1000" height="1000" shape-rendering="crispEdges">\n`;
         svgContent += `  <rect width="${count}" height="${count}" fill="#ffffff"/>\n`;
         svgContent += `  <path fill="#000000" d="`;
         
-        // 4. Ciclo per estrarre le coordinate dei soli quadratini neri
+        // Leggiamo il centro di ogni modulo sul canvas per determinare se è nero
         for (let r = 0; r < count; r++) {
             for (let c = 0; c < count; c++) {
-                if (matrix[r] && matrix[r][c]) {
-                    // M = muovi a (colonna, riga), h1 = linea orizzontale da 1, v1 = linea verticale da 1, h-1 = torna indietro
+                const pixelX = Math.floor(c * moduleSize + moduleSize / 2);
+                const pixelY = Math.floor(r * moduleSize + moduleSize / 2);
+                const dataIndex = (pixelY * size + pixelX) * 4;
+                
+                const rColor = imgData[dataIndex];
+                const gColor = imgData[dataIndex+1];
+                const bColor = imgData[dataIndex+2];
+                
+                // Se il pixel tende al nero (valore soglia < 128)
+                if (rColor < 128 && gColor < 128 && bColor < 128) {
                     svgContent += `M${c} ${r}h1v1h-1z `;
                 }
             }
@@ -110,12 +143,12 @@ function downloadQR(format = 'png') {
         
         svgContent += `"/>\n</svg>`;
         
-        // 5. Crea il Blob vettoriale e avvia il download del file .svg
+        // Creazione del Blob ed esecuzione del download del file SVG
         const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
         link.href = URL.createObjectURL(blob);
         link.download = dynamicName + '.svg';
     } else {
-        // Esportazione standard PNG
+        // Esportazione classica in PNG
         link.href = canvas.toDataURL('image/png');
         link.download = dynamicName + '.png';
     }
