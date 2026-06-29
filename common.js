@@ -71,6 +71,38 @@ function getFileNameFromUrl(url) {
     } catch (e) { return "qrcode-jcks"; }
 }
 
+// Funzione di supporto autonoma per calcolare la matrice del QR (Algoritmo compatto)
+function generateQRMatrix(text, errorCorrectionLevel = 'H') {
+    // Sfruttiamo un'istanza temporanea pura di QRious passandogli un oggetto fittizio 
+    // con un metodo "getContext" minimale. Questo inganna la libreria facendole credere
+    // di essere su un canvas, popolando così la matrice dei moduli senza toccare il DOM reale.
+    const mockCanvas = {
+        getContext: function() {
+            return {
+                clearRect: function() {},
+                fillRect: function() {},
+                drawImage: function() {},
+                canvas: { width: 1000, height: 1000 }
+            };
+        },
+        width: 1000,
+        height: 1000
+    };
+    
+    const tempQr = new QRious({
+        element: mockCanvas,
+        value: text,
+        level: errorCorrectionLevel
+    });
+    
+    // Nelle varie versioni di QRious, la matrice si trova in uno di questi tre percorsi
+    if (tempQr._qr && tempQr._qr.modules) return tempQr._qr.modules;
+    if (tempQr.api && tempQr.api.modules) return tempQr.api.modules;
+    if (tempQr.modules) return tempQr.modules;
+    
+    throw new Error("Impossibile estrarre la matrice dei moduli");
+}
+
 function downloadQR(format = 'png') {
     const canvas = document.getElementById('qr-canvas');
     const urlInput = document.getElementById('qr-input').value;
@@ -87,22 +119,15 @@ function downloadQR(format = 'png') {
 
     if (format === 'svg') {
         try {
-            // Assicuriamoci che l'oggetto QR globale sia aggiornato con il valore corrente dell'input
-            if (qr) {
-                qr.value = urlInput;
-            } else {
-                throw new Error("Oggetto QR non inizializzato");
-            }
-            
-            // Accediamo alla matrice reale generata sul canvas dall'istanza attiva
-            const matrix = qr.api.modules; 
+            // Generiamo la matrice in modo sicuro tramite la funzione di supporto
+            const matrix = generateQRMatrix(urlInput, 'H');
             const count = matrix.length;
             
             let svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${count} ${count}" width="1000" height="1000" shape-rendering="crispEdges">\n`;
             svgContent += `  <rect width="${count}" height="${count}" fill="#ffffff"/>\n`;
             svgContent += `  <path fill="#000000" fill-rule="evenodd" d="`;
             
-            // Algoritmo di ottimizzazione geometrica delle righe
+            // Algoritmo di ottimizzazione geometrica: unisce i quadratini orizzontali per Illustrator
             for (let r = 0; r < count; r++) {
                 let c = 0;
                 while (c < count) {
@@ -112,7 +137,7 @@ function downloadQR(format = 'png') {
                             c++;
                         }
                         let width = c - start;
-                        // Disegna un unico rettangolo unito per ridurre i punti di ancoraggio su Illustrator
+                        // Unico tracciato orizzontale continuo
                         svgContent += `M${start} ${r}h${width}v1h-${width}z `;
                     } else {
                         c++;
@@ -130,6 +155,7 @@ function downloadQR(format = 'png') {
             return;
         }
     } else {
+        // Esportazione standard PNG
         link.href = canvas.toDataURL('image/png');
         link.download = dynamicName + '.png';
     }
