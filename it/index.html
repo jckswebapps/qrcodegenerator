@@ -23,12 +23,20 @@
 <script src="/common.js"></script>
 </head><body>
 
-    <header class="main-header">
+   <header class="main-header">
     <div class="container header-flex">
         <div class="logo">
             <a href="/">FastQRfree<span>.com</span></a>
         </div>
-        <nav class="nav-menu">
+
+<!-- Bottone Hamburger visibile solo su Mobile -->
+        <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+         <nav class="nav-menu" id="nav-menu">
             <ul>
                 <li><a href="/it/chi-siamo.html">Chi Siamo</a></li>
                 <li><a href="/it/donazione.html">Contribuisci</a></li>
