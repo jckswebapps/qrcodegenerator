@@ -1,98 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <!-- Home Page / English (Default) -->
-  <url>
-    <loc>https://fastqrfree.com/</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fastqrfree.com/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://fastqrfree.com/"/>
-  </url>
+<?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:fo="http://www.w3.org/1999/XSL/Format"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-  <!-- Italiano -->
-  <url>
-    <loc>https://fastqrfree.com/it/</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fastqrfree.com/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/"/>
-  </url>
 
-  <!-- Deutsch -->
-  <url>
-    <loc>https://fastqrfree.com/de/</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fastqrfree.com/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/"/>
-  </url>
-
-  <!-- Français -->
-  <url>
-    <loc>https://fastqrfree.com/fr/</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fastqrfree.com/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/"/>
-  </url>
-
-  <!-- Español -->
-  <url>
-    <loc>https://fastqrfree.com/es/</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fastqrfree.com/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/"/>
-  </url>
-
-  <!-- Russian -->
-  <url>
-    <loc>https://fastqrfree.com/ru/</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fastqrfree.com/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/"/>
-  </url>
-
-  <!-- Pagine chi-siamo (Esempio IT) -->
-  <url>
-    <loc>https://fastqrfree.com/it/chi-siamo.html</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
+<url>
+  <loc>https://fastqrfree.com/</loc>
+  <lastmod>2026-06-30T08:04:26+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/donate.html</loc>
+  <lastmod>2026-06-30T08:04:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/it/</loc>
+  <lastmod>2026-06-30T08:04:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/de/</loc>
+  <lastmod>2026-06-30T08:04:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/es/</loc>
+  <lastmod>2026-06-30T08:04:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/fr/</loc>
+  <lastmod>2026-06-30T08:04:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/ru/</loc>
+  <lastmod>2026-06-30T08:04:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/convert-png-to-svg.html</loc>
+  <lastmod>2026-06-30T08:04:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/it/donazione.html</loc>
+  <lastmod>2026-06-30T08:04:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/de/spenden.html</loc>
+  <lastmod>2026-06-30T08:04:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/es/donar.html</loc>
+  <lastmod>2026-06-30T08:04:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/fr/faire-un-don.html</loc>
+  <lastmod>2026-06-30T08:04:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/ru/donate.html</loc>
+  <lastmod>2026-06-30T08:04:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/it/chi-siamo.html</loc>
+  <lastmod>2026-06-30T08:04:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/it/convertire-immagini-in-vettoriale.html</loc>
+  <lastmod>2026-06-30T08:04:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/es/convertir-png-a-svg.html</loc>
+  <lastmod>2026-06-30T08:04:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fastqrfree.com/fr/convertir-png-en-vectoriel.html</loc>
+  <lastmod>2026-06-30T08:04:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
 
 </urlset>
