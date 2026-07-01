@@ -1,1 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مولد رموز QR مجاني عالي الدقة - FastQRfree</title>
+    <meta name="description" content="مولد رموز QR استاتيكية مجاني عالي الدقة. أنشئ رموز QR جاهزة للطباعة (2000x2000 بكسل) للروابط والنصوص. بدون تسجيل، بدون تاريخ انتهاء، مجاني 100%.">
+    <link rel="alternate" hreflang="en" href="https://fastqrfree.com/" />
+    <link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/" />
+    <link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/" />
+    <link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/" />
+    <link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/" />
+    <link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/" />
+    <link rel="alternate" hreflang="ja" href="https://fastqrfree.com/ja/" />
+    <link rel="alternate" hreflang="pt" href="https://fastqrfree.com/pt/" />
+    <link rel="alternate" hreflang="zh" href="https://fastqrfree.com/zh/" />
+    <link rel="alternate" hreflang="ar" href="https://fastqrfree.com/ar/" />
+    <link rel="alternate" hreflang="x-default" href="https://fastqrfree.com/" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="/common.js"></script>
+</head>
+<body>
 
+<header class="main-header">
+    <div class="container header-flex">
+        <div class="logo">
+            <a href="/ar/">FastQRfree<span>.com</span></a>
+        </div>
+        
+        <!-- زر القائمة للهواتف المحمولة -->
+        <button class="menu-toggle" aria-label="تبديل القائمة" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="/donate.html">ادعمنا</a></li>
+                <li class="lang-dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">العربية</a>
+                    <div class="dropdown-content">
+                        <a href="/">English (EN)</a>
+                        <a href="/it/">Italiano (IT)</a>
+                        <a href="/de/">Deutsch (DE)</a>
+                        <a href="/es/">Español (ES)</a>
+                        <a href="/fr/">Français (FR)</a>
+                        <a href="/ru/">Русский (RU)</a>
+                        <a href="/ja/">日本語 (JA)</a>
+                        <a href="/pt/">Português (PT)</a>
+                        <a href="/zh/">简体中文 (ZH)</a>
+                        <a href="/ar/">العربية (AR)</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>مولد رموز QR احترافي مجاني</h1>
+        <p>أنشئ رموز QR استاتيكية عالية الدقة للاستخدام التجاري، الطباعة، والتسويق.</p>
+    </div>
+</section>
+
+<div class="generator-card">
+    <input type="text" id="qr-input" placeholder="ألصق الرابط الخاص بك هنا (مثال: https://yoursite.com)" oninput="generateQR()">
+    <canvas id="qr-canvas"></canvas>
+    <div class="resolution-control" style="margin: 0 0 20px 0;">
+        <label for="res-slider" style="display: block; margin-bottom: 10px; color: var(--secondary); font-weight: 600;">
+            الدقة: <span id="res-value">1000</span> x <span id="res-value-alt">1000</span> بكسل
+        </label>
+        <input type="range" id="res-slider" min="200" max="2000" step="100" value="1000" 
+               style="width: 100%; cursor: pointer;" oninput="updateResolution(this.value)">
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #999; margin-top: -10px;">
+            <span>جودة منخفضة</span>
+            <span>جودة عالية</span>
+        </div>
+    </div>
+    <!-- أزرار التحميل جنباً إلى جنب -->
+    <div style="display: flex; gap: 15px; margin-top: 10px;">
+        <button onclick="downloadPNG()" style="flex: 1;">تحميل PNG</button>
+        <button onclick="downloadSVG()" style="flex: 1; background-color: #6c757d;">تحميل SVG (برسم موجه)</button>
+    </div>
+</div>
+
+<section class="content-section">
+    <div class="container">
+        <div class="grid">
+            <div>
+                <h2>ما هو رمز QR الاستاتيكي؟</h2>
+                <p>يحتوي رمز QR الاستاتيكي (الثابت) على معلومات مشفرة مباشرة داخل النمط الرسومي. بمجرد إنشائه، لا يمكن تغيير الرابط، مما يجعله مثالياً لـ <strong>الأوراق الفنية، ملصقات المنتجات، والمواد المطبوعة</strong> التي تحتاج إلى الاستمرار دون الحاجة إلى اشتراكات أو تواريخ انتهاء صلاحية.</p>
+            </div>
+            <div>
+                <h2>جودة جاهزة للطباعة</h2>
+                <p>ينتج المولد الخاص بنا ملفات بحجم يصل إلى <strong>2000x2000 بكسل</strong>. تضمن هذه الدقة وضوحاً تاماً على مستندات A4، الكتيبات، والتغليف. حتى عند تغيير حجمه إلى 2 سم، يحتفظ الرمز بكثافة كافية ليتمكن أي هاتف ذكي من قراءته.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section bg-grey">
+    <div class="container">
+        <h2>هل تبحث عن صيغ الرسوم الموجهة؟ (SVG/EPS)</h2>
+        <p>للتطبيقات الكبيرة مثل ملصقات واجهات المحلات، الطباعة على الملابس، أو اللافتات الكبيرة، نوصي بشدة باستخدام صيغة الرسوم الموجهة (Vectores). تتيح لك أداةنا الآن تحميل ملف SVG أصلي بنقرة واحدة.</p>
+        <p>إذا كنت تفضل تحميل نسخة PNG عالية الدقة أو تحتاج إلى معالجة أصول خارجية، يمكنك بسهولة تحويل أي صورة بكسل إلى مسارات قابلة للتطوير باستخدام برامج التصميم الاحترافية.</p>
+        <p style="margin-top: 20px;">
+            <a href="/ar/convert-png-to-svg.html" class="btn-link" style="font-weight: bold; color: #0056b3; text-decoration: underline;">
+                اقرأ دليلنا الكامل: كيفية تحويل PNG إلى SVG مجاناً &rarr;
+            </a>
+        </p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>لماذا تختار مولد رموز QR الخاص بنا؟</h2>
+        <ul>
+            <li><strong>مجاني للأبد:</strong> بدون قيود على عدد مرات المسح أو تكاليف مخفية.</li>
+            <li><strong>خصوصية مضمونة:</strong> لا يتم حفظ بياناتك على خوادمنا على الإطلاق.</li>
+            <li><strong>تنظيم ذكي:</strong> يتم تسمية الملفات المحملة تلقائياً بناءً على الرابط لسهولة إدارة الفهرس الخاص بك.</li>
+            <li><strong>تصحيح الأخطاء من المستوى H:</strong> أقصى درجات القوة والتحمل حتى لو تعرض سطح الرمز للتلف الجزئي أو التلطيخ.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="content-section bg-grey">
+    <div class="container">
+        <h2>الأسئلة الشائعة (FAQ)</h2>
+        <div class="faq-grid" style="margin-top: 40px;">
+            <div class="faq-item">
+                <strong>هل تنتهي صلاحية رموز QR المنشأة؟</strong>
+                <p>لا، رموز QR الخاصة بنا استاتيكية. هذا يعني أن المعلومات مشفرة مباشرة في النمط ولن تنتهي صلاحيتها أبداً. فقط تأكد من أن الرابط الوجهة يظل نشطاً.</p>
+            </div>
+            <div class="faq-item">
+                <strong>هل هناك حد لعدد مرات المسح؟</strong>
+                <p>لا توجد حدود. نظراً لأنها رموز استاتيكية، يمكن مسحها عدداً لا نهائياً من المرات دون أي تكاليف أو قيود.</p>
+            </div>
+            <div class="faq-item">
+                <strong>هل يمكنني تغيير الرابط بعد الطباعة?</strong>
+                <p>لا. في الرموز الاستاتيكية، يكون الرابط دائماً. لتغيير الوجهة، ستحتاج إلى إنشاء رمز جديد وطباعته.</p>
+            </div>
+            <div class="faq-item">
+                <strong>ما هو الحجم الأدنى للطباعة؟</strong>
+                <p>نوصي بحجم أدنى يبلغ 2x2 سم (0.8x0.8 بوصة) لضمان قدرة جميع الهواتف الذكية على قراءته بسهولة، خاصة للروابط الطويلة.</p>
+            </div>
+            <div class="faq-item">
+                <strong>هل بياناتي آمنة؟</strong>
+                <p>بكل تأكيد. نحن لا نخزن الروابط الخاصة بك ولا نتتبع بيانات المسح. كل شيء يحدث محلياً في متصفحك.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        &copy; 2026 jckswebapps - Free tools for web and technical production.
+    </div>
+</footer>
+
+<div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #212529; color: white; padding: 15px; text-align: center; z-index: 10000; font-size: 14px;">
+    يستخدم هذا الموقع ملفات تعريف الارتباط من Google Analytics لتحسين تجربتك.
+    <button onclick="acceptCookies()" style="background: var(--primary); border: none; color: white; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-left: 10px;">موافق</button>
+</div>
+    
+</body>
+</html>
