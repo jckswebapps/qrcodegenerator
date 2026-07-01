@@ -1,1 +1,169 @@
-pt
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de QR Code Grátis em Alta Resolução - FastQRfree</title>
+    <meta name="description" content="Gerador de QR code estático gratuito em alta resolução. Crie QR codes prontos para impressão (2000x2000px) para URLs e textos. Sem registro, sem expiração, 100% grátis.">
+    <link rel="alternate" hreflang="en" href="https://fastqrfree.com/" />
+    <link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/" />
+    <link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/" />
+    <link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/" />
+    <link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/" />
+    <link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/" />
+    <link rel="alternate" hreflang="ja" href="https://fastqrfree.com/ja/" />
+    <link rel="alternate" hreflang="pt" href="https://fastqrfree.com/pt/" />
+    <link rel="alternate" hreflang="x-default" href="https://fastqrfree.com/" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="/common.js"></script>
+</head>
+<body>
+
+<header class="main-header">
+    <div class="container header-flex">
+        <div class="logo">
+            <a href="/pt/">FastQRfree<span>.com</span></a>
+        </div>
+        
+        <button class="menu-toggle" aria-label="Alternar menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="/donate.html">Apoie o Projeto</a></li>
+                <li class="lang-dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Português</a>
+                    <div class="dropdown-content">
+                        <a href="/">English (EN)</a>
+                        <a href="/it/">Italiano (IT)</a>
+                        <a href="/de/">Deutsch (DE)</a>
+                        <a href="/es/">Español (ES)</a>
+                        <a href="/fr/">Français (FR)</a>
+                        <a href="/ru/">Русский (RU)</a>
+                        <a href="/ja/">日本語 (JA)</a>
+                        <a href="/pt/">Português (PT)</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Gerador de QR Code Profissional Grátis</h1>
+        <p>Gere QR codes estáticos de alta resolução perfeitos para uso comercial, impressão e marketing.</p>
+    </div>
+</section>
+
+<div class="generator-card">
+    <input type="text" id="qr-input" placeholder="Cole seu link aqui (ex: https://seusite.com)" oninput="generateQR()">
+    <canvas id="qr-canvas"></canvas>
+    <div class="resolution-control" style="margin: 0 0 20px 0;">
+        <label for="res-slider" style="display: block; margin-bottom: 10px; color: var(--secondary); font-weight: 600;">
+            Resolução: <span id="res-value">1000</span> x <span id="res-value-alt">1000</span> Px
+        </label>
+        <input type="range" id="res-slider" min="200" max="2000" step="100" value="1000" 
+               style="width: 100%; cursor: pointer;" oninput="updateResolution(this.value)">
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #999; margin-top: -10px;">
+            <span>Baixa Qualidade</span>
+            <span>Alta Qualidade</span>
+        </div>
+    </div>
+    <div style="display: flex; gap: 15px; margin-top: 10px;">
+        <button onclick="downloadPNG()" style="flex: 1;">Baixar PNG</button>
+        <button onclick="downloadSVG()" style="flex: 1; background-color: #6c757d;">Baixar SVG (Vetor)</button>
+    </div>
+</div>
+
+<section class="content-section">
+    <div class="container">
+        <div class="grid">
+            <div>
+                <h2>O que é um QR Code Estático?</h2>
+                <p>Os QR codes estáticos incorporam as informações diretamente no seu padrão gráfico. Embora o link não possa ser alterado após a geração, eles são ideais para <strong>folhas de especificações, rótulos de produtos e materiais impressos permanentes</strong>, pois você nunca precisará se preocupar com assinaturas ou prazos de expiração.</p>
+            </div>
+            <div>
+                <h2>Alta Qualidade Pronta para Impressão</h2>
+                <p>Nosso gerador cria arquivos de até <strong>2000x2000 pixels</strong>. Essa resolução garante que, ao imprimir em documentos A4, panfletos ou embalagens, o código permaneça perfeitamente nítido. Mesmo reduzido para cerca de 2 cm, ele mantém a densidade ideal para ser lido por qualquer smartphone.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section bg-grey">
+    <div class="container">
+        <h2>Procurando por Formatos Vetoriais (SVG/EPS)?</h2>
+        <p>Para aplicações em grandes formatos, como adesivos de vitrine, impressão em roupas ou banners de 1 metro, é altamente recomendável usar um formato vetorial. Nossa ferramenta agora suporta o download direto de arquivos SVG vetoriais nativos com apenas um clique.</p>
+        <p>Se você preferir baixar o arquivo PNG de alta resolução ou precisar processar elementos gráficos externos, poderá converter facilmente imagens rasterizadas em caminhos escaláveis usando softwares gráficos profissionais.</p>
+        <p style="margin-top: 20px;">
+            <a href="/pt/convert-png-to-svg.html" class="btn-link" style="font-weight: bold; color: #0056b3; text-decoration: underline;">
+                Ler o Guia Completo: Como Converter PNG para SVG Vetorial Grátis &rarr;
+            </a>
+        </p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>Por que Escolher Nosso Gerador de QR Code?</h2>
+        <ul>
+            <li><strong>Gratuito para Sempre:</strong> Sem limites de escaneamento ou custos ocultos.</li>
+            <li><strong>Privacidade Garantida:</strong> Os dados inseridos nunca são salvos em nossos servidores.</li>
+            <li><strong>Gestão Inteligente:</strong> Os arquivos baixados recebem nomes automáticos baseados na URL para facilitar a organização do seu catálogo.</li>
+            <li><strong>Correção de Erros Nível H:</strong> Garante a máxima precisão de leitura mesmo que a superfície do código esteja parcialmente suja ou danificada.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="content-section bg-grey">
+    <div class="container">
+        <h2>Perguntas Frequentes (FAQ)</h2>
+        <div class="faq-grid" style="margin-top: 40px;">
+            <div class="faq-item">
+                <strong>O QR code gerado tem data de validade?</strong>
+                <p>Não, não tem. Como nosso QR code é estático, a informação é codificada diretamente no próprio código e nunca expira. Você só precisa garantir que a URL de destino permaneça ativa.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Existe algum limite para o número de escaneamentos?</strong>
+                <p>Nenhum limite. Sendo um código estático, ele pode ser escaneado infinitas vezes sem custos ou restrições de qualquer tipo.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Posso alterar o link após a impressão?</strong>
+                <p>Não. Em códigos estáticos, o link é permanente. Para alterar o destino, você precisará gerar e imprimir um novo código.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Qual é o tamanho mínimo para impressão?</strong>
+                <p>Recomendamos um tamanho mínimo de 2x2 cm (0,8x0,8 polegadas) para garantir que todos os smartphones consigam lê-lo facilmente, especialmente para URLs mais longas.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Meus dados estão seguros?</strong>
+                <p>Absolutamente. Nós não armazenamos suas URLs nem rastreamos dados de escaneamento. Tudo acontece localmente no seu próprio navegador.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        &copy; 2026 jckswebapps - Free tools for web and technical production.
+    </div>
+</footer>
+
+<div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #212529; color: white; padding: 15px; text-align: center; z-index: 10000; font-size: 14px;">
+    Este site utiliza cookies do Google Analytics para melhorar a sua experiência.
+    <button onclick="acceptCookies()" style="background: var(--primary); border: none; color: white; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-left: 10px;">Aceitar</button>
+</div>
+    
+</body>
+</html>
