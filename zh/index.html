@@ -1,1 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>免费高分辨率二维码生成器 - FastQRfree</title>
+    <meta name="description" content="免费高分辨率静态二维码生成器。快速创建适用于URL和文本的印刷级二维码（2000x2000px）。无需注册，永久有效，100%免费。">
+    <link rel="alternate" hreflang="en" href="https://fastqrfree.com/" />
+    <link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/" />
+    <link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/" />
+    <link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/" />
+    <link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/" />
+    <link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/" />
+    <link rel="alternate" hreflang="ja" href="https://fastqrfree.com/ja/" />
+    <link rel="alternate" hreflang="pt" href="https://fastqrfree.com/pt/" />
+    <link rel="alternate" hreflang="zh" href="https://fastqrfree.com/zh/" />
+    <link rel="alternate" hreflang="x-default" href="https://fastqrfree.com/" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="/common.js"></script>
+</head>
+<body>
 
+<header class="main-header">
+    <div class="container header-flex">
+        <div class="logo">
+            <a href="/zh/">FastQRfree<span>.com</span></a>
+        </div>
+        
+        <!-- 移动端汉堡菜单按钮 -->
+        <button class="menu-toggle" aria-label="切换菜单" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="/donate.html">赞助我们</a></li>
+                <li class="lang-dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">简体中文</a>
+                    <div class="dropdown-content">
+                        <a href="/">English (EN)</a>
+                        <a href="/it/">Italiano (IT)</a>
+                        <a href="/de/">Deutsch (DE)</a>
+                        <a href="/es/">Español (ES)</a>
+                        <a href="/fr/">Français (FR)</a>
+                        <a href="/ru/">Русский (RU)</a>
+                        <a href="/ja/">日本語 (JA)</a>
+                        <a href="/pt/">Português (PT)</a>
+                        <a href="/zh/">简体中文 (ZH)</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>免费专业二维码生成器</h1>
+        <p>生成适用于商业用途、印刷及市场营销的高分辨率静态二维码。</p>
+    </div>
+</section>
+
+<div class="generator-card">
+    <input type="text" id="qr-input" placeholder="在此粘贴您的链接（例如：https://yoursite.com）" oninput="generateQR()">
+    <canvas id="qr-canvas"></canvas>
+    <div class="resolution-control" style="margin: 0 0 20px 0;">
+        <label for="res-slider" style="display: block; margin-bottom: 10px; color: var(--secondary); font-weight: 600;">
+            分辨率: <span id="res-value">1000</span> x <span id="res-value-alt">1000</span> 像素
+        </label>
+        <input type="range" id="res-slider" min="200" max="2000" step="100" value="1000" 
+               style="width: 100%; cursor: pointer;" oninput="updateResolution(this.value)">
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #999; margin-top: -10px;">
+            <span>低画质</span>
+            <span>高画质</span>
+        </div>
+    </div>
+    <!-- 并排下载按钮 -->
+    <div style="display: flex; gap: 15px; margin-top: 10px;">
+        <button onclick="downloadPNG()" style="flex: 1;">下载 PNG</button>
+        <button onclick="downloadSVG()" style="flex: 1; background-color: #6c757d;">下载 SVG (矢量)</button>
+    </div>
+</div>
+
+<section class="content-section">
+    <div class="container">
+        <div class="grid">
+            <div>
+                <h2>什么是静态二维码？</h2>
+                <p>静态二维码的信息直接加密编码在图形图案中。一旦生成，链接将无法更改。这使其非常适合<strong>技术参数表、产品标签和需要长期使用的印刷材料</strong>，无需担心订阅或过期问题。</p>
+            </div>
+            <div>
+                <h2>印刷级完美品质</h2>
+                <p>我们的生成器支持输出高达 <strong>2000x2000 像素</strong> 的文件。这一分辨率可确保在 A4 纸张、宣传册和包装上印刷时具有完美的清晰度。即使缩放到 2 厘米大小，也能保持足够的密度供任何智能手机轻松扫描。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section bg-grey">
+    <div class="container">
+        <h2>正在寻找矢量格式？(SVG/EPS)</h2>
+        <p>对于商铺橱窗贴纸、服装印刷或1米宽横幅等大型应用，我们强烈建议使用矢量格式。我们的工具现已支持一键直接下载原生 SVG 矢量文件。</p>
+        <p>如果您更倾向于下载高分辨率 PNG 或需要处理外部素材，您也可以轻松使用专业设计软件将任何位图转换为可伸缩的矢量路径。</p>
+        <p style="margin-top: 20px;">
+            <a href="/zh/convert-png-to-svg.html" class="btn-link" style="font-weight: bold; color: #0056b3; text-decoration: underline;">
+                阅读完整指南：如何免费将 PNG 转换为 SVG 矢量图 &rarr;
+            </a>
+        </p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>为什么选择我们的二维码生成器？</h2>
+        <ul>
+            <li><strong>永久免费:</strong> 无扫描次数限制，无任何隐藏费用。</li>
+            <li><strong>隐私保证:</strong> 您输入的数据绝不会保存到我们的服务器上。</li>
+            <li><strong>智能命名管理:</strong> 下载的文件将自动根据 URL 进行命名，方便进行目录和档案管理。</li>
+            <li><strong>H 级纠错能力:</strong> 即使二维码表面局部受损或污损，也能保持极高的读取准确率。</li>
+        </ul>
+    </div>
+</section>
+
+<section class="content-section bg-grey">
+    <div class="container">
+        <h2>常见问题 (FAQ)</h2>
+        <div class="faq-grid" style="margin-top: 40px;">
+            <div class="faq-item">
+                <strong>生成的二维码会过期吗？</strong>
+                <p>不会，我们的二维码是静态的。这意味着信息直接内置于图案本身，永远不会过期。您只需确保目标 URL 保持有效即可。</p>
+            </div>
+            <div class="faq-item">
+                <strong>有扫描次数限制吗？</strong>
+                <p>没有任何限制。因为是静态二维码，所以可以被无限次扫描，不产生任何费用或限制。</p>
+            </div>
+            <div class="faq-item">
+                <strong>印刷后可以修改链接吗？</strong>
+                <p>不能。静态二维码中的链接是永久性的。如果需要更改跳转地址，您必须重新生成并印刷新的二维码。</p>
+            </div>
+            <div class="faq-item">
+                <strong>印刷的最小尺寸是多少？</strong>
+                <p>我们建议最小尺寸不低于 2x2 厘米（0.8x0.8 英寸），以确保所有智能手机都能轻松读取，尤其是当 URL 较长时。</p>
+            </div>
+            <div class="faq-item">
+                <strong>我的数据安全吗？</strong>
+                <p>绝对安全。我们不存储您的 URL，也不追踪扫描数据。所有核心操作均在您的浏览器本地完成。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        &copy; 2026 jckswebapps - Free tools for web and technical production.
+    </div>
+</footer>
+
+<div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #212529; color: white; padding: 15px; text-align: center; z-index: 10000; font-size: 14px;">
+    本网站使用 Google Analytics Cookie 以提升您的使用体验。
+    <button onclick="acceptCookies()" style="background: var(--primary); border: none; color: white; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-left: 10px;">同意</button>
+</div>
+    
+</body>
+</html>
