@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無料・高解像度QRコード作成サイト - FastQRfree</title>
+    <meta name="description" content="登録不要、無期限で完全無料の静的QRコード作成ツール。印刷に最適な高解像度PNGファイルおよびベクター形式（SVG）を1クリックで即座にダウンロード可能。">
+    <link rel="alternate" hreflang="en" href="https://fastqrfree.com/" />
+    <link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/" />
+    <link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/" />
+    <link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/" />
+    <link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/" />
+    <link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/" />
+    <link rel="alternate" hreflang="ja" href="https://fastqrfree.com/ja/" />
+    <script src="/common.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head>
+<body>
 
+<header class="main-header">
+    <div class="container header-flex">
+        <div class="logo">
+            <a href="/ja/">FastQRfree<span>.com</span></a>
+        </div>
+        
+        <button class="menu-toggle" aria-label="メニューを開く" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="/donate.html" target="_blank">運営を支援する</a></li>
+                <li class="lang-dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">日本語</a>
+                    <div class="dropdown-content">
+                        <a href="/">English (EN)</a>
+                        <a href="/it/">Italiano (IT)</a>
+                        <a href="/de/">Deutsch (DE)</a>
+                        <a href="/es/">Español (ES)</a>
+                        <a href="/fr/">Français (FR)</a>
+                        <a href="/ru/">Русский (RU)</a>
+                        <a href="/ja/">日本語 (JA)</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero-section">
+    <div class="container">
+        <h1>無料・高解像度QRコード作成</h1>
+        <p>URLやテキストを入力するだけで、印刷に適した高品質なQRコードを即座に生成。登録不要・商用利用可能・無期限で完全無料です。</p>
+        
+        <div class="generator-box">
+            <div class="input-group">
+                <label for="qr-input">URLまたはテキストを入力</label>
+                <input type="text" id="qr-input" placeholder="https://example.com" oninput="generateQR()">
+            </div>
+
+            <div class="slider-container">
+                <label for="res-slider">画像解像度 (PNGのみ): <span id="res-value">1000</span>x<span id="res-value-alt">1000</span> px</label>
+                <input type="range" id="res-slider" min="200" max="2000" value="1000" step="50" oninput="updateResolution(this.value); generateQR();">
+            </div>
+            
+            <div class="output-group">
+                <div class="qr-preview">
+                    <canvas id="qr-canvas"></canvas>
+                </div>
+                <div class="download-buttons">
+                    <button onclick="downloadPNG()" class="btn btn-primary">PNGをダウンロード</button>
+                    <button onclick="downloadSVG()" class="btn btn-secondary">SVGをダウンロード (ベクター形式)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>FastQRfreeが選ばれる理由</h2>
+        <div class="grid">
+            <div class="feature-card">
+                <h3>100% 無料 & 制限なし</h3>
+                <p>アカウント登録やクレジットカードは一切不要。広告用のリダイレクトを挟まない純粋な静的QRコードを、制限なく何個でも作成できます。</p>
+            </div>
+            <div class="feature-card">
+                <h3>有効期限なし</h3>
+                <p>生成されたQRコードは永久に有効です。外部サーバーを介さずデータが直接コード化されるため、将来的にリンクが切れる心配はありません。</p>
+            </div>
+            <div class="feature-card">
+                <h3>印刷・商業利用に最適</h3>
+                <p>WEB用の軽量なPNGから、最大2000pxの大型印刷用、さらに看板やパッケージのデザイナーに必須な縮尺自在のベクター形式（SVG）まで対応しています。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section bg-grey">
+    <div class="container">
+        <h2>ベクター形式（SVG/EPS）の生成・活用方法</h2>
+        <p>店舗のウィンドウデカール、アパレル印刷、看板など、大型の印刷物にはベクター形式の使用を強くお勧めします。当サイトのジェネレーターは、1クリックでネイティブなSVGベクターファイルを直接ダウンロードできます。</p>
+        
+        <p>高解像度PNGファイルを加工したい場合や、外部のロゴ画像をベクター化（パス化）したい場合は、以下の手順で手動で処理を行うことも可能です：</p>
+        <ol>
+            <li>当サイトから高解像度のPNGファイルをダウンロードします。</li>
+            <li><strong>Adobe Illustrator</strong>や、無料のオープンソースソフト<strong>Inkscape</strong>などのグラフィックデザインソフトを開きます。</li>
+            <li>「画像トレacing（画像トレース）」機能を起動し、「白黒のロゴ」または「シルエット」に設定します。</li>
+            <li>トレース結果を「拡張」します。これで、品質を損なうことなく無限に拡大・縮小できる完璧なベクターQRコードが完成します。</li>
+        </ol>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>よくある質問 (FAQ)</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <strong>スキャン回数に制限はありますか？</strong>
+                <p>いいえ、制限は一切ありません。作成されたQRコードは、費用や制限なしで無制限にスキャンすることができます。</p>
+            </div>
+            <div class="faq-item">
+                <strong>印刷した後にリンク先を変更することはできますか？</strong>
+                <p>いいえ、できません。静的QRコードのデータはコード自体に直接埋め込まれているため、永続的です。宛先を変更する場合は、新しいコードを生成して印刷し直す必要があります。</p>
+            </div>
+            <div class="faq-item">
+                <strong>印刷時の最小サイズはどのくらいですか？</strong>
+                <p>すべてのスマートフォンでスムーズに読み取れるよう、最低でも 2x2 cm 以上のサイズで印刷することをお勧めします（URLの文字数が長い場合はさらに大きめのサイズを推奨します）。</p>
+            </div>
+            <div class="faq-item">
+                <strong>入力したデータは安全ですか？</strong>
+                <p>はい、完全に安全です。当サイトは入力されたURLをサーバーに保存したり、スキャンデータを追跡したりしません。すべての処理はお使いのブラウザ内（ローカル）で完結します。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        &copy; 2026 jckswebapps - 無料のWEB・技術生産ツール
+    </div>
+</footer>
+
+<div id=\"cookie-banner\" style=\"position: fixed; bottom: 0; left: 0; width: 100%; background: #212529; color: white; padding: 15px; text-align: center; z-index: 10000; font-size: 14px;\">
+    当サイトでは、ユーザー体験向上のためにGoogle アナリティクスのクッキーを使用しています。
+    <button onclick=\"acceptCookies()\" style=\"background: var(--primary); border: none; color: white; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-left: 15px;\">同意する</button>
+</div>
+
+</body>
+</html>
