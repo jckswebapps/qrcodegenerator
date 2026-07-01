@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jak za darmo przekonwertować PNG do wektora SVG | FastQRfree</title>
+    <meta name="description" content="Dowiedz się, jak bezpłatnie konwertować pliki PNG na układy wektorowe SVG. Przewodnik krok po kroku po wektoryzacji grafiki rastrowej przy użyciu Adobe Illustrator, Inkscape i narzędzi online.">
+    <link rel="alternate" hreflang="en" href="https://fastqrfree.com/" />
+    <link rel="alternate" hreflang="it" href="https://fastqrfree.com/it/" />
+    <link rel="alternate" hreflang="de" href="https://fastqrfree.com/de/" />
+    <link rel="alternate" hreflang="fr" href="https://fastqrfree.com/fr/" />
+    <link rel="alternate" hreflang="es" href="https://fastqrfree.com/es/" />
+    <link rel="alternate" hreflang="ru" href="https://fastqrfree.com/ru/" />
+    <link rel="alternate" hreflang="ja" href="https://fastqrfree.com/ja/" />
+    <link rel="alternate" hreflang="pt" href="https://fastqrfree.com/pt/" />
+    <link rel="alternate" hreflang="pl" href="https://fastqrfree.com/pl/" />
+    <link rel="alternate" hreflang="x-default" href="https://fastqrfree.com/" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="/common.js"></script>
+</head>
+<body>
 
+<header class="main-header">
+    <div class="container header-flex">
+        <div class="logo">
+            <a href="/pl/">FastQRfree<span>.com</span></a>
+        </div>
+        <!-- Przycisk hamburgerowy dla urządzeń mobilnych -->
+        <button class="menu-toggle" aria-label="Przełącz menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+         <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="/donate.html">Wesprzyj Projekt</a></li>
+                <li class="lang-dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Polski</a>
+                    <div class="dropdown-content">
+                        <a href="/">English (EN)</a>
+                        <a href="/it/">Italiano (IT)</a>
+                        <a href="/de/">Deutsch (DE)</a>
+                        <a href="/es/">Español (ES)</a>
+                        <a href="/fr/">Français (FR)</a>
+                        <a href="/ru/">Русский (RU)</a>
+                        <a href="/ja/">日本語 (JA)</a>
+                        <a href="/pt/">Português (PT)</a>
+                        <a href="/pl/convert-png-to-svg.html">Polski (PL)</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Jak konwertować pliki PNG do formatu wektorowego SVG</h1>
+        <p>Profesjonalny przewodnik techniczny pokazujący, jak zamienić obrazy PNG na formaty wektorowe (SVG, EPS, PDF) w celu uzyskania idealnej jakości druku.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>Dlaczego musisz konwertować pliki PNG na formaty wektorowe</h2>
+        <p>Obrazy w formacie <strong>PNG</strong> to pliki rastrowe, składające się ze stałej siatki pikseli. Kiedy powiększasz plik PNG powyżej jego oryginalnych wymiarów, szybko traci on ostrość, pokazując poszarpane krawędzie i rozmycia. Jest to krytyczny problem w druku komercyjnym, znakowaniu odzieży oraz na wielkich banerach reklamowych.</p>
+        <p>Z kolei <strong>formaty wektorowe, takie jak SVG</strong>, opierają się na formułach matematycznych i współrzędnych, a nie na pikselach. Oznacza to, że możesz je skalować w nieskończoność bez utraty choćby kropli jakości. Krawędzie Twoich kształtów, logotypów czy kodów QR pozostaną w 100% ostre na każdym nośniku – od wizytówki po gigantyczny billboard.</p>
+        
+        <div class="grid" style="margin-top: 30px;">
+            <div>
+                <h3>Natywne generowanie plików SVG</h3>
+                <p>Choć nasze narzędzie pozwala na natychmiastowe pobranie czystego pliku SVG za pomocą jednego kliknięcia, wiedza o tym, jak samodzielnie <strong>przekonwertować plik PNG na grafikę wektorową</strong>, daje Ci pełną niezależność podczas pracy nad materiałami firmowymi.</p>
+            </div>
+            <div>
+                <h3>Standardy w druku komercyjnym</h3>
+                <p>W publikacjach cyfrowych i poligrafii premium ścieżki wektorowe są obowiązkowym standardem wymaganym do grawerowania laserowego, cięcia na ploterach folii, sitodruku oraz idealnych reprodukcji cyfrowych.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section bg-grey">
+    <div class="container">
+        <h2>Metoda 1: Zamiana PNG na wektor w programie Adobe Illustrator</h2>
+        <p>Jeśli korzystasz z profesjonalnego oprogramowania graficznego, możesz łatwo <strong>zamienić plik PNG w kształty wektorowe</strong> za pomocą wbudowanego silnika automatycznego wektoryzowania:</p>
+        
+        <ol style="line-height: 1.8; margin-left: 20px; margin-top: 20px;">
+            <li><strong>Umieść obraz:</strong> Otwórz program Adobe Illustrator, utwórz nowy dokument i przeciągnij pobrany plik PNG na obszar roboczy.</li>
+            <li><strong>Uruchom opcję Obrysowywanie Obrazu:</strong> Zaznacz obraz, znajdź na górnym pasku sterowania (lub w panelu Właściwości) i kliknij <strong>Obrysowywanie Obrazu</strong> (Image Trace). Dla precyzyjnych kształtów geometrycznych, takich jak kody QR, wybierz ustawienie predefiniowane <em>"Czarno-białe logo"</em> lub <em>"Sylwetki"</em>.</li>
+            <li><strong>Dostosuj ustawienia zaawansowane:</strong> Otwórz zaawansowany panel obrysowywania obrazu. Przesuń suwak „Narożniki” na 100%, aby uzyskać idealnie ostre krawędzie. Niezwykle ważne jest zaznaczenie pola <strong>„Ignoruj biały”</strong> (Ignore White) – dzięki temu tło automatycznie zniknie, pozostawiając jedynie czystą, czarną ścieżkę.</li>
+            <li><strong>Rozwiń do ścieżek:</strong> Kliknij przycisk <strong>„Rozwiń”</strong> (Expand) na górnym pasku menu. Spowoduje to przekształcenie podglądu obrysu w rzeczywiste, edytowalne wektorowe punkty kotwiczenia.</li>
+            <li><strong>Zapisz jako SVG/EPS:</strong> Przejdź do <em>Plik > Zapisz jako</em> i wybierz format <strong>SVG</strong> lub <strong>Illustrator EPS</strong> z rozwijanej listy formatów.</li>
+        </ol>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>Metoda 2: Użycie programu Inkscape do natywnej konwersji na SVG (Darmowa alternatywa)</h2>
+        <p>Jeśli nie posiadasz subskrypcji Adobe, możesz łatwo <strong>zamienić PNG na wektor za darmo</strong> za pomocą programu <strong>Inkscape</strong> – świetnego edytora grafiki wektorowej o otwartym kodzie źródłowym. Oto jak to zrobić:</p>
+        
+        <ul style="line-height: 1.8; margin-left: 20px; margin-top: 20px;">
+            <li>Pobierz i uruchom program Inkscape, a następnie zaimportuj swój obraz rastrowy poprzez <em>Plik > Importuj</em>.</li>
+            <li>Kliknij na obraz, aby go zaznaczyć, a następnie przejdź do górnego menu i wybierz <strong>Ścieżka > Wektoryzuj bitmapę</strong>.</li>
+            <li>W panelu konfiguracyjnym po prawej stronie wybierz opcję „Próg jasności”, sprawdź podgląd na żywo i kliknij <strong>Zastosuj</strong>.</li>
+            <li>Przesuń nowo wygenerowaną ścieżkę wektorową na bok i usuń oryginalny, rozpikselowany obraz PNG znajdujący się pod spodem.</li>
+            <li>Zapisz swoją pracę, wybierając <em>Plik > Zapisz jako</em> i wskazując <strong>Zwykły SVG</strong> (Plain SVG) jako format wyjściowy.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="content-section bg-grey">
+    <div class="container">
+        <h2>Często zadawane pytania dotyczące plików wektorowych</h2>
+        <div class="faq-grid" style="margin-top: 40px;">
+            <div class="faq-item">
+                <strong>Czy pliki SVG pobrane z FastQRfree są w pełni wektorowe?</strong>
+                <p>Tak. Nasza opcja „Pobierz SVG” wykorzystuje zaawansowany, niestandardowy silnik matematyczny do generowania prawdziwego, wysokiej jakości i lekkiego pliku SVG bezpośrednio w Twojej przeglądarce. Nie musisz go ręcznie obrysowywać.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Jak połączyć osobne kształty w jedną warstwę w programie Illustrator?</strong>
+                <p>Jeśli otworzysz plik wektorowy i zauważysz, że składa się on z osobnych, stykających się linii, po prostu zaznacz wszystkie elementy i kliknij przycisk <strong>„Suma”</strong> (Unite) w panelu Odnajdywanie Ścieżek (Pathfinder). Spowoduje to natychmiastowe scalenie wszystkiego w jedną czystą ścieżkę złożoną.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Czy do druku lepiej wybrać format SVG czy EPS?</strong>
+                <p>SVG to nowoczesny wybór natywny dla sieci web, kompatybilny ze wszystkim – od standardowych przeglądarek po program Canva. EPS to tradycyjny standard druku, preferowany przez starsze, fizyczne drukarnie offsetowe. Oba oferują identyczną, nieskończoną jakość skalowania.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        &copy; 2026 jckswebapps - Free tools for web and technical production.
+    </div>
+</footer>
+
+<div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #212529; color: white; padding: 15px; text-align: center; z-index: 10000; font-size: 14px;">
+    Ta strona używa plików cookie Google Analytics w celu poprawy komfortu użytkowania.
+    <button onclick="acceptCookies()" style="background: var(--primary); border: none; color: white; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-left: 10px;">Akceptuję</button>
+</div>
+    
+</body>
+</html>
